@@ -1,0 +1,25 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+focus_tree = {
+	id = china_communist_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = PRC
+			has_dlc = "Waking the Tiger"
+		}
+	}
+	
+
+	default = no
+
+	continuous_focus_position = { x = 20 y = 1000 }
+}

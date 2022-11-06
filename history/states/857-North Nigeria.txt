@@ -1,0 +1,27 @@
+state={
+	id=857
+	name="North Nigeria"
+	resources={
+		rubber=2.000
+	}
+
+	history={
+		owner = ENG
+		add_core_of = NGA
+		buildings = {
+			infrastructure = 2
+			arms_factory = 0
+			industrial_complex = 1
+
+		}
+
+	}
+
+	provinces={
+		1891 1932 1969 2025 4938 4972 4997 5028 8021 8109 10820 
+	}
+	manpower=1757000
+	buildings_max_level_factor=1.000
+	state_category=rural
+	local_supplies=0.000
+}

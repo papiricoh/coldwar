@@ -1,0 +1,67 @@
+ideas = {
+	country = {
+		UN_security_council = {
+			name = "United Nations Security Council Member"
+			removal_cost = -1
+
+			picture = security_council
+		
+			modifier = {
+				stability_factor = 0.10
+				drift_defence_factor = 0.25
+				political_power_factor = 0.3
+			}
+		}
+
+		
+		VIN_vietnam_hard_fight = {
+			name = "Rebel Spirit"
+			removal_cost = -1
+
+			picture = prc_the_long_march
+		
+			modifier = {
+				army_defence_factor = 0.1
+				army_attack_factor = 0.3
+				war_support_factor = 0.4
+				
+			}
+		}
+		VIN_vietnam_logistics_boost = {
+			name = "Cu Chi Tunnel"
+			removal_cost = -1
+
+			picture = chi_army_corruption
+		
+			modifier = {
+				army_leader_start_logistics_level = 6
+				supply_node_range = 0.5
+				
+			}
+		}
+		VIN_vietnam_unified = {
+			name = "Dreams of Vietnamese Unification"
+			removal_cost = -1
+
+			picture = generic_communist_army
+		
+			modifier = {
+				war_support_factor = 0.3
+				
+			}
+		}
+		INTERNATIONAL_nuclear_club = {
+			name = "Nuclear Superpower"
+			removal_cost = -1
+
+			picture = SOV_atomic_bomb_project
+		
+			modifier = {
+				stability_factor = -0.15
+				nuclear_production = 1
+				nuclear_production_factor = 0.05
+				surrender_limit = 0.2
+			}
+		}
+	}
+}

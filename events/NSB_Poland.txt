@@ -1,0 +1,2 @@
+﻿
+add_namespace = NSB_poland_events

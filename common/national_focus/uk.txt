@@ -1,0 +1,969 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+focus_tree = {
+	id = british_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = ENG
+		}
+	}
+	default = no
+
+	focus = {
+		id = ENG_decolonization
+		icon = "GFX_focus_eng_decolonization"
+		text = "The End of the Empire"
+		x = 18
+		y = 0
+		cost = 10
+		#prerequisite = { focus = FRA_exit_nato_doctrine }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		#relative_position_id = FRA_exit_nato_doctrine
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 1000
+			set_global_flag = ENG_decolonized
+			set_country_flag = ENG_decolonization_left_faction
+		}
+	}
+	focus = {
+		id = ENG_the_dominions_issue
+		icon = GFX_focus_eng_bring_the_dominions_back_into_the_fold
+		text = "The Dominions Issue"
+		x = -8
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_decolonization }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_decolonization
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			every_country = {
+				limit = {
+					is_subject_of = ENG
+				}
+				country_event = { id = britain.2 }
+			}
+		}
+	}
+	focus = {
+		id = ENG_united_commonwealth
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		text = "United Commonwealth"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_the_dominions_issue }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_the_dominions_issue
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_ideas = ENG_commonwealth_member
+			every_country = {
+				limit = {
+					is_subject_of = ENG
+				}
+				country_event = { id = britain.3 }
+			}
+			CAN = {country_event = { id = britain.3 }}
+			AST = {country_event = { id = britain.3 }}
+			NZL = {country_event = { id = britain.3 }}
+			RAJ = {country_event = { id = britain.3 }}
+		}
+	}
+	focus = {
+		id = ENG_ceylon_independence
+		icon = GFX_goal_generic_position_armies
+		text = "Ceylon Independence"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_united_commonwealth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_united_commonwealth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			release = SRL
+			SRL = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.3
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+			random_list = {
+				50 = {
+					SRL = {
+						add_ideas = ENG_commonwealth_member
+					}
+				}
+				50 = {
+					
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_kuwait_independence
+		icon = GFX_goal_generic_position_armies
+		text = "Kuwait Independence"
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_united_commonwealth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_united_commonwealth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			date > 1960.1.1
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			release = KUW
+			KUW = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.3
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+			random_list = {
+				50 = {
+					KUW = {
+						add_ideas = ENG_commonwealth_member
+					}
+				}
+				50 = {
+					
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_united_arab_independence
+		icon = GFX_goal_generic_position_armies
+		text = "United Emirates Independence"
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_united_commonwealth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_united_commonwealth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			date > 1970.1.1
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			release = UAE
+			UAE = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.3
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+			random_list = {
+				50 = {
+					UAE = {
+						add_ideas = ENG_commonwealth_member
+					}
+				}
+				50 = {
+					
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_yemen_independence
+		icon = GFX_goal_generic_position_armies
+		text = "Yemen Independence"
+		x = -1
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_united_commonwealth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_united_commonwealth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			date > 1967.1.1
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			YEM = {
+				transfer_state = 659
+			}
+			random_list = {
+				25 = {
+					YEM = {
+						add_ideas = ENG_commonwealth_member
+					}
+				}
+				75 = {
+					
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_qatar_independence
+		icon = GFX_goal_generic_position_armies
+		text = "Qatar Independence"
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_united_commonwealth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_united_commonwealth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			date > 1971.1.1
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			release = QAT
+			QAT = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.3
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+			random_list = {
+				50 = {
+					QAT = {
+						add_ideas = ENG_commonwealth_member
+					}
+				}
+				50 = {
+					
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_malayan_independence
+		icon = GFX_goal_generic_position_armies
+		text = "Malayan Independence"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_ceylon_independence }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_ceylon_independence
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			date > 1955.1.1
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			transfer_state = 336
+			end_puppet = MAL
+			MAL = {drop_cosmetic_tag = yes}
+		}
+	}
+	focus = {
+		id = ENG_singapore_to_malaya
+		icon = GFX_goal_generic_major_alliance
+		text = "Malayan Singapore"
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_malayan_independence }
+		mutually_exclusive = { focus = ENG_independent_singapore }
+		relative_position_id = ENG_malayan_independence
+		ai_will_do = {
+			factor = 4
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			MAL = {
+				transfer_state = 336
+			}
+		}
+	}
+	focus = {
+		id = ENG_independent_singapore
+		icon = GFX_goal_generic_more_territorial_claims
+		text = "Independent Singapore"
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_malayan_independence }
+		mutually_exclusive = { focus = ENG_singapore_to_malaya }
+		relative_position_id = ENG_malayan_independence
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			SIN = {
+				transfer_state = 336
+			}
+		}
+	}
+	focus = {
+		id = ENG_suez_crisis
+		icon = GFX_goal_generic_political_pressure
+		text = "The Suez Crisis"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_decolonization }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_decolonization
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			date > 1956.1.1
+			EGY = {
+				has_government = democratic
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			EGY = {
+				country_event = { id = britain.1 }
+			}
+		}
+	}
+	focus = {
+		id = ENG_the_fate_of_the_empire
+		icon = GFX_focus_eng_the_sun_never_sets
+		text = "The Fate of the Empire"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_suez_crisis }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_suez_crisis
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_ideas = ENG_imperial_sentiment
+		}
+	}
+	focus = {
+		id = ENG_apartheid
+		icon = GFX_focus_ENG_south_african_division
+		text = "Dissmiss the South African Apartheid"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_the_fate_of_the_empire }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_the_fate_of_the_empire
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			SAF = {is_subject_of  = ENG}
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			SAF = {country_event = {id = britain.17}}
+		}
+	}
+	focus = {
+		id = ENG_elisabeth
+		icon = GFX_focus_generic_monarchy_2
+		text = "Queen Elisabeth Coronation"
+		x = -3
+		y = 1
+		cost = 2
+		prerequisite = { focus = ENG_decolonization }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_decolonization
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			NOT = {
+				has_idea = ENG_george_vi
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_ideas = ENG_Elizabeth_II
+		}
+	}
+	focus = {
+		id = ENG_country_development
+		icon = GFX_goal_generic_construction
+		text = "South Land Development Reforms"
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_elisabeth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_elisabeth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					region = 1
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_country_development_2
+		icon = GFX_goal_generic_construction2
+		text = "South Land Development Reforms II"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_country_development }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_country_development
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					region = 1
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_country_development_3
+		icon = GFX_goal_generic_construction2
+		text = "North Land Development Reforms"
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_elisabeth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_elisabeth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					region = 2
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_country_development_4
+		icon = GFX_goal_generic_construction
+		text = "North Land Development Reforms II"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_country_development_3 }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_country_development_3
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					region = 2
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_infrastructure_development
+		icon = GFX_goal_generic_construct_infrastructure
+		text = "Infrastructure Development"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_elisabeth }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_elisabeth
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 1
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_the_european_community
+		icon = GFX_focus_generic_european_union
+		text = "Join The European Community"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_infrastructure_development }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_infrastructure_development
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			FRA = {has_idea = EC_member}
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			FRA = {country_event = {id = britain.19}}
+		}
+	}
+	focus = {
+		id = ENG_fight_of_communism
+		icon = GFX_goal_generic_war_with_ussr
+		text = "Anti-Communism Doctrines"
+		x = 4
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_decolonization }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_decolonization
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.025
+			}
+		}
+	}
+	focus = {
+		id = ENG_nuclear_factories
+		icon = GFX_goal_generic_factory_upgrade
+		text = "The Nuclear Effort"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_fight_of_communism }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_fight_of_communism
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			set_technology = {
+				atomic_research = 1
+				nuclear_reactor = 1
+			}
+			random_owned_state = {
+				limit = {
+					region = 1
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					region = 1
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_research_nukes
+		icon = GFX_focus_research
+		text = "Nuclear theory in the Universities"
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = ENG_nuclear_factories }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_nuclear_factories
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = ENG_boom
+		icon = GFX_focus_wonderweapons
+		text = "BOOM!"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_research_nukes }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_research_nukes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			set_technology = {
+				nukes = 1
+			}
+			add_nuclear_bombs = 1	
+			add_ideas = {
+				INTERNATIONAL_nuclear_club
+			}
+		}
+	}
+	focus = {
+		id = ENG_cooperation_with_USA
+		icon = GFX_focus_usa_build_the_pentagon
+		text = "Cooperation with the United States"
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_boom }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_boom
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = ENG_national_health_service
+		icon = GFX_goal_generic_national_unity
+		text = "National Health Service"
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = ENG_the_european_community }
+		prerequisite = { focus = ENG_apartheid }
+		#mutually_exclusive = { focus = SOV_the_motherland }
+		relative_position_id = ENG_the_european_community
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_ideas = { UK_NHS }
+		}
+	}
+}

@@ -1,0 +1,14 @@
+ideas = {
+	country = {
+		SOV_comecon = {
+			removal_cost = -1
+
+			picture = comecon
+		
+			modifier = {
+				stability_factor = 0.10
+				drift_defence_factor = 0.5
+			}
+		}	
+	}
+}

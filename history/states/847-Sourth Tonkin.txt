@@ -1,0 +1,27 @@
+state={
+	id=847
+	name="South Tonkin"
+	history={
+		add_core_of = VIN
+		owner = FRA
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 1
+			air_base = 1
+
+		}
+		1949.1.1 = {
+			owner = VIN
+			controller = FRA
+			add_core_of = SVI
+		}
+
+	}
+	provinces={
+		1248 1302 4255 4379 7229 10137 10180 10309 
+	}
+	manpower=450000
+	buildings_max_level_factor=1.000
+	state_category=town
+	local_supplies=0.000
+}

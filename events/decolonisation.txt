@@ -1,0 +1,855 @@
+add_namespace = colonies
+
+country_event = {
+	id = colonies.1 #Lybya
+	title = "Decolonisation of Lybya"
+	desc = "The Libyans are making protests throughout their country asking for independence, the camera of the commons believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1951.12.24
+		date < 1960.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = LBA
+		}
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = LBA
+			}
+			FRA = {
+				release = LBA
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.2 
+	title = "Decolonisation of Sudan"
+	desc = "The Sudan are making protests throughout their country asking for independence, the camera of the commons believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1956.1.1
+		date < 1960.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = SUD
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = SUD
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.3
+	title = "Decolonisation of Tunisia"
+	desc = "The Tunisia are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1956.3.20
+		date < 1960.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = TUN
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = TUN
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.4
+	title = "Decolonisation of Ghana"
+	desc = "The Ghana are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1957.3.6
+		date < 1960.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = GHA
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = GHA
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.5
+	title = "Decolonisation of Guinea"
+	desc = "The Guinea are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1958.10.2
+		date < 1960.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = GNA
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = GNA
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.6
+	title = "Decolonisation of Cameroon"
+	desc = "The Cameroon are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1960.1.1
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = CMR
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = CMR
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.7
+	title = "Decolonisation of Togo"
+	desc = "The Togo are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1960.3.1
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = TOG
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = TOG
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.8
+	title = "Decolonisation of Mali, Senegal and Madagascar"
+	desc = "These countries are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1960.6.1
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = MLI
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = MLI
+				release = SEN
+				release = MAD
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.9
+	title = "Decolonisation of Democratic Republic of the Congo"
+	desc = "The Democratic Republic of the Congo are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = BEL
+		date > 1960.6.30
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = COG
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			BEL = {
+				release = COG
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.10
+	title = "Decolonisation of most of Africa"
+	desc = "The African citicents are making protests throughout their countries asking for independence, the parliament believes that the countries are ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1960.8.1
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = GAB
+			country_exists = VOL
+			country_exists = NGR
+			country_exists = DAH
+			country_exists = CAR
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = DAH
+				release = NGR
+				release = VOL
+				release = IVO
+				release = CHA
+				release = CAR
+				release = RCG
+				release = GAB
+				release = MRT #Mauritania
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.11
+	title = "Decolonisation of Sierra Leone"
+	desc = "The Sierra Leone are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1961.3.27
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = SIE
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = SIE
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.12
+	title = "Decolonisation of Tanzania"
+	desc = "The Tanzania are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1961.12.9
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = TZN
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = TZN
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.13
+	title = "Decolonisation of Burundi and Rwanda"
+	desc = "The Burundi and Rwanda governments are making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = BEL
+		date > 1962.7.1
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = RWA
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			BEL = {
+				release = RWA
+				release = BRD
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.14
+	title = "Decolonisation of Algeria"
+	desc = "The Algerian government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1962.7.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = ALG
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = ALG
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.15
+	title = "Decolonisation of Uganda"
+	desc = "The Ugandan government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1962.10.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = UGA
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = UGA
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.16
+	title = "Decolonisation of Kenya"
+	desc = "The Kenya government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1963.12.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = KEN
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = KEN
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.17
+	title = "Decolonisation of Malawi"
+	desc = "The Malawi government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1964.7.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = ZAM
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = MLW
+				release = ZAM
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.18
+	title = "Decolonisation of The Gambia"
+	desc = "The The Gambian government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1965.2.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = GAM
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = GAM
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.19
+	title = "Decolonisation of Botswana"
+	desc = "The Botswanan government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1966.9.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = BOT
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = BOT
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.20
+	title = "Decolonisation of Equatorial Guinea"
+	desc = "The United Nations is pressing us with the decolonization of africa, they want us to get rid of Equatorial Guinea"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SPR
+		date > 1968.9.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = EQG
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			SPR = {
+				release = EQG
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.21
+	title = "Decolonisation of Guinea-Bissau"
+	desc = "The Guinea-Bissaun government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = POR
+		date > 1974.1.5
+		date < 1980.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = GBI
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			POR = {
+				release = GBI
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.22
+	title = "Decolonisation of Angola"
+	desc = "The Angolan government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = POR
+		date > 1975.6.5
+		date < 1980.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = ANG
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			POR = {
+				release = MZB
+				release = ANG
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.23
+	title = "Decolonisation of Morocco"
+	desc = "The Moroccan government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FRA
+		date > 1956.2.5
+		date < 1960.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = MOR
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			FRA = {
+				release = MOR
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.24
+	title = "Decolonisation of Somalia"
+	desc = "The Somalian government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1960.6.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = SOM
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = SOM
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.25
+	title = "Decolonisation of Nigeria"
+	desc = "The Nigerian government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1960.10.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = NGA
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = NGA
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.26
+	title = "Decolonisation of Rhodesia"
+	desc = "The Rhodesian government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		date > 1965.10.5
+		date < 1970.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = ZIM
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			ENG = {
+				release = ZIM
+			}
+		}
+	}
+}
+country_event = {
+	id = colonies.27
+	title = "Decolonisation of Sahrawi Arab Democratic Republic"
+	desc = "The Sahrawi Arab Democratic Republic government is making protests throughout their country asking for independence, the parliament believes that the country is ready to survive alone"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SPR
+		date > 1976.2.5
+		date < 1980.1.1
+		has_government = democratic
+		NOT = {
+			country_exists = WES
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2	
+	}
+	
+	option = {
+		name = "Grant independence"
+		hidden_effect = {
+			SPR = {
+				release = WES
+			}
+		}
+	}
+}

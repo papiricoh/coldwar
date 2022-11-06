@@ -1,0 +1,2 @@
+﻿
+add_namespace = wtt_political_organisation

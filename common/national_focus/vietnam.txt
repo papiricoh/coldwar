@@ -1,0 +1,1878 @@
+focus_tree = {
+	id = soviet_germany_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = VIN
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1100 }
+
+	focus = {
+		id = VIN_first_indochina_war
+		icon = GFX_focus_generic_tank_production
+		text = "Victory on the First Indochina War"
+		#prerequisite = { focus = ITA_ethiopian_war_logistics }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 20
+		y = 0
+		#relative_position_id = ITA_ethiopian_war_logistics
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			date > 1949.1.1
+			NOT= {
+				has_war_with = FRA
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = VIN_industrialization
+		icon = GFX_focus_generic_industry_1
+		text = "Revive the industry"
+		prerequisite = { focus = VIN_first_indochina_war }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = -8
+		y = 3
+		relative_position_id = VIN_first_indochina_war
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_civilian_industry_1
+		icon = GFX_focus_generic_industry_2
+		text = "Restructuring the Civilian Industry"
+		prerequisite = { focus = VIN_industrialization }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = -1
+		y = 1
+		relative_position_id = VIN_industrialization
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_civilian_industry_2
+		icon = GFX_focus_generic_industry_3
+		text = "Restructuring the Civilian Industry II"
+		prerequisite = { focus = VIN_civilian_industry_1 }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 2
+		relative_position_id = VIN_civilian_industry_1
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_military_industry_1
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Restructuring the Military Industry"
+		prerequisite = { focus = VIN_industrialization }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 1
+		y = 1
+		relative_position_id = VIN_industrialization
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_military_industry_2
+		icon = GFX_goal_generic_construct_military
+		text = "Restructuring the Military Industry II"
+		prerequisite = { focus = VIN_military_industry_1 }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 2
+		relative_position_id = VIN_military_industry_1
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_land_reform
+		icon = GFX_goal_generic_construct_infrastructure
+		text = "Pass the Land Reform"
+		prerequisite = { focus = VIN_military_industry_2 }
+		prerequisite = { focus = VIN_civilian_industry_2 }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = -1
+		y = 1
+		relative_position_id = VIN_military_industry_2
+		cost = 30
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			OR = {
+				has_government = communism
+				has_government = fascism
+				has_government = neutrality
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 8
+			}
+		}
+	}
+	focus = {
+		id = VIN_focus_on_politics
+		icon = GFX_goal_generic_national_unity
+		text = "Focus on Politics"
+		prerequisite = { focus = VIN_first_indochina_war }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 2
+		relative_position_id = VIN_first_indochina_war
+		cost = 20
+		ai_will_do = {
+			factor = 6
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = VIN_the_southem_threat 
+		icon = GFX_goal_generic_secret_weapon
+		text = "The Southem Threat"
+		prerequisite = { focus = VIN_focus_on_politics }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 2
+		y = 1
+		relative_position_id = VIN_focus_on_politics
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_political_power = 200
+			set_country_flag = VIN_focus_on_south #Allows vietnam war to trigger
+		}
+	}
+	focus = {
+		id = VIN_second_indochina_war
+		icon = GFX_goal_generic_alliance
+		text = "The Second Indochina War"
+		prerequisite = { focus = VIN_the_southem_threat }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 1
+		relative_position_id = VIN_the_southem_threat
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = SVI
+			date > 1955.1.1
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = VIN_soviet_help
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		text = "Seek Soviet Help"
+		prerequisite = { focus = VIN_second_indochina_war }
+		mutually_exclusive = { focus = VIN_china_help }
+		x = 1
+		y = 1
+		relative_position_id = VIN_second_indochina_war
+		cost = 10
+		ai_will_do = {
+			factor = 2
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = SVI
+			country_exists = SOV
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 18000
+				producer = SOV
+			}
+		}
+	}
+	focus = {
+		id = VIN_china_help
+		icon = GFX_focus_chi_cooperation_with_the_communists
+		text = "Seek Chinese Help"
+		prerequisite = { focus = VIN_second_indochina_war }
+		prerequisite = { focus = VIN_the_china_autorization }
+		mutually_exclusive = { focus = VIN_soviet_help }
+		x = -1
+		y = 1
+		relative_position_id = VIN_second_indochina_war
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = SVI
+			
+			country_exists = PRC
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 22000
+				producer = PRC
+			}
+		}
+	}
+	focus = {
+		id = VIN_war_logistics
+		icon = GFX_goal_generic_attack_allies
+		text = "Use the Cu Chi Tunnel"
+		prerequisite = { focus = VIN_china_help focus = VIN_soviet_help }
+		#mutually_exclusive = { focus = VIN_soviet_help }
+		x = 1
+		y = 2
+		relative_position_id = VIN_china_help
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = SVI
+
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_timed_idea = {idea = VIN_vietnam_logistics_boost days = 220}
+		}
+	}
+	focus = {
+		id = VIN_destroy_the_uss_maddox
+		icon = GFX_focus_generic_destroyer
+		text = "Destroy the USS Maddox"
+		prerequisite = { focus = VIN_war_logistics }
+		#mutually_exclusive = { focus = VIN_soviet_help }
+		x = 0
+		y = 1
+		relative_position_id = VIN_war_logistics
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = SVI
+			NOT = {
+				has_war_with = USA
+			}
+			date > 1964.1.1
+		}
+
+		bypass = {
+			has_war_with = USA
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			declare_war_on = {
+				target = USA
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+		id = VIN_propose_a_peace_deal
+		icon = GFX_goal_generic_dangerous_deal
+		text = "Propose a Peace Deal"
+		prerequisite = { focus = VIN_destroy_the_uss_maddox }
+		prerequisite = { focus = VIN_closed_economy }
+		#mutually_exclusive = { focus = VIN_soviet_help }
+		x = -2
+		y = 1
+		relative_position_id = VIN_destroy_the_uss_maddox
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = USA
+			date > 1970.1.1
+			date < 1980.1.1
+		}
+
+		bypass = {
+			NOT = {
+				has_war_with = USA
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			USA = {country_event = { id = coldcrisis.10}}
+		}
+	}
+	focus = {
+		id = VIN_propose_a_peace_deal_2
+		icon = GFX_goal_generic_military_deal
+		text = "Try to Sign Again the Peace Deal"
+		prerequisite = { focus = VIN_propose_a_peace_deal }
+		#mutually_exclusive = { focus = VIN_soviet_help }
+		x = -1
+		y = 1
+		relative_position_id = VIN_propose_a_peace_deal
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war_with = USA
+			date > 1974.1.1
+			date < 1980.1.1
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			USA = {country_event = { id = coldcrisis.10}}
+		}
+	}
+	focus = {
+		id = VIN_consolidate_the_newspapers
+		icon = GFX_goal_generic_propaganda
+		text = "Secure the newspapers"
+		prerequisite = { focus = VIN_focus_on_politics }
+		#mutually_exclusive = { focus = VIN_soviet_help }
+		x = -2
+		y = 1
+		relative_position_id = VIN_focus_on_politics
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			NOT = {
+				has_government = democratic
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.1
+			}
+		}
+	}
+	focus = {
+		id = VIN_the_china_autorization
+		icon = GFX_focus_chi_one_china_policy
+		text = "Chinese Communism Lessons"
+		prerequisite = { focus = VIN_consolidate_the_newspapers }
+		mutually_exclusive = { focus = VIN_the_soviet_autorization }
+		x = 1
+		y = 1
+		relative_position_id = VIN_consolidate_the_newspapers
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			NOT = {
+				has_government = democratic
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			army_experience = 100
+			add_political_power = 300
+		}
+	}
+	focus = {
+		id = VIN_the_soviet_autorization
+		icon = GFX_goal_support_communism
+		text = "Soviet Communism Lessons"
+		prerequisite = { focus = VIN_consolidate_the_newspapers }
+		mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -1
+		y = 1
+		relative_position_id = VIN_consolidate_the_newspapers
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			NOT = {
+				has_government = democratic
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			army_experience = 200
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = VIN_claim_to_be_the_one_vietnam
+		icon = GFX_focus_man_claim_the_mandate_of_heaven
+		text = "The One and Only Vietnamese State"
+		prerequisite = { focus = VIN_the_soviet_autorization focus = VIN_the_china_autorization }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 1
+		y = 2
+		relative_position_id = VIN_the_soviet_autorization
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			country_exists = SVI
+		}
+
+		bypass = {
+			NOT= {
+				country_exists = SVI
+				has_war_with = USA
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = VIN_vietnam_unified
+		}
+	}
+	focus = {
+		id = VIN_closed_economy
+		icon = GFX_focus_fra_devalue_the_franc
+		text = "Closed Economy Politics"
+		prerequisite = { focus = VIN_claim_to_be_the_one_vietnam }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 2
+		relative_position_id = VIN_claim_to_be_the_one_vietnam
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			country_exists = SVI
+		}
+
+		bypass = {
+			NOT= {
+				country_exists = SVI
+				has_war_with = USA
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_resource = {
+					type = oil
+					amount = 3
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = tungsten
+					amount = 6
+				}
+			}
+			add_ideas = closed_economy
+		}
+	}
+	focus = {
+		id = VIN_victory_in_the_second_indochina_war
+		icon = GFX_focus_generic_support_the_left_right
+		text = "Victory on the Second Indochina War"
+		prerequisite = { focus = VIN_propose_a_peace_deal }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 2
+		relative_position_id = VIN_propose_a_peace_deal
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			NOT= {
+				country_exists = SVI
+				has_war_with = USA
+			}
+			date > 1970.1.1
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_war_support = -0.3
+			add_threat = -30
+		}
+	}
+	focus = {
+		id = VIN_vietnamese_industrial_revolution
+		icon = GFX_goal_generic_construction
+		text = "Vietnamese Industrial Revolution"
+		prerequisite = { focus = VIN_claim_to_be_the_one_vietnam }
+		prerequisite = { focus = VIN_military_industry_2 }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -3
+		y = 1
+		relative_position_id = VIN_claim_to_be_the_one_vietnam
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 6 }
+		}
+	}
+	focus = {
+		id = VIN_vietnamese_closed_industry
+		icon = GFX_focus_generic_join_comintern
+		text = "Vietnamese Closed Industry"
+		prerequisite = { focus = VIN_vietnamese_industrial_revolution }
+		prerequisite = { focus = VIN_closed_economy }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 2
+		relative_position_id = VIN_vietnamese_industrial_revolution
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+		}
+	}
+	focus = {
+		id = VIN_infantry_focus
+		icon = GFX_goal_generic_small_arms
+		text = "Infantry Revolution"
+		prerequisite = { focus = VIN_first_indochina_war }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 8
+		y = 3
+		relative_position_id = VIN_first_indochina_war
+		cost = 20
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+	}
+	focus = {
+		id = VIN_support_tech
+		icon = GFX_goal_generic_military_sphere
+		text = "Infantry Support Technologies"
+		prerequisite = { focus = VIN_infantry_focus }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -1
+		y = 1
+		relative_position_id = VIN_infantry_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = support_tech
+			}
+		}
+	}
+	focus = {
+		id = VIN_find_scientifics
+		icon = GFX_goal_generic_scientific_exchange
+		text = "Technology Focus"
+		prerequisite = { focus = VIN_support_tech }
+		prerequisite = { focus = VIN_second_indochina_war }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -2
+		y = 1
+		relative_position_id = VIN_support_tech
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = VIN_mechanized_focus
+		icon = GFX_goal_generic_army_doctrines
+		text = "Mechanized Focus"
+		prerequisite = { focus = VIN_support_tech }
+		prerequisite = { focus = VIN_second_indochina_war }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 1
+		relative_position_id = VIN_support_tech
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = cat_mechanized_equipment
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_tank_focus
+		icon = GFX_goal_generic_army_tanks
+		text = "Tank Focus"
+		prerequisite = { focus = VIN_mechanized_focus }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 1
+		relative_position_id = VIN_mechanized_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = armor
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_air_fighter_focus
+		icon = GFX_goal_generic_air_fighter
+		text = "Fighter Production Focus"
+		prerequisite = { focus = VIN_infantry_focus }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 1
+		y = 1
+		relative_position_id = VIN_infantry_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 2
+				category = light_fighter
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_air_bomber_focus
+		icon = GFX_goal_generic_air_bomber
+		text = "Bomber Production Focus"
+		prerequisite = { focus = VIN_air_fighter_focus }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 1
+		relative_position_id = VIN_air_fighter_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 2
+				category = tactical_bomber
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_air_naval_focus
+		icon = GFX_goal_generic_CAS
+		text = "CAS Production Focus"
+		prerequisite = { focus = VIN_air_bomber_focus }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 1
+		relative_position_id = VIN_air_bomber_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 2
+				category = CAS_bomber
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_artillery_focus
+		icon = GFX_goal_generic_army_artillery
+		text = "Artillery Focus"
+		prerequisite = { focus = VIN_air_naval_focus focus = VIN_tank_focus }
+		prerequisite = { focus = VIN_war_logistics }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -1
+		y = 2
+		relative_position_id = VIN_air_naval_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 2
+				category = artillery
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_research_focus
+		icon = GFX_focus_research
+		text = "Research Focus"
+		prerequisite = { focus = VIN_artillery_focus focus = VIN_destroy_the_uss_maddox }
+		prerequisite = { focus = VIN_find_scientifics }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -3
+		y = 1
+		relative_position_id = VIN_artillery_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_research_slot = 1
+			
+		}
+	}
+	focus = {
+		id = VIN_research_focus_2
+		icon = GFX_focus_research2
+		text = "Research in Universities"
+		prerequisite = { focus = VIN_research_focus }
+		prerequisite = { focus = VIN_artillery_focus }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 3
+		y = 1
+		relative_position_id = VIN_research_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_research_slot = 1
+			
+		}
+	}
+	focus = {
+		id = VIN_the_city_of_minh
+		icon = GFX_focus_generic_treaty
+		text = "The City of Ho Chi Minh"
+		prerequisite = { focus = VIN_victory_in_the_second_indochina_war }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 1
+		relative_position_id = VIN_victory_in_the_second_indochina_war
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			286 = {
+				is_owned_by = VIN
+				is_controlled_by = VIN
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			286 = {
+				set_state_name = "Ho Chi Minh"
+			}
+			set_province_name = {
+				id = 4401
+				name = "Ho Chi Minh (Saigon)"
+			}
+		}
+	}
+	focus = {
+		id = VIN_develop_the_land
+		icon = GFX_focus_generic_tungsten
+		text = "Land Development Programs"
+		prerequisite = { focus = VIN_victory_in_the_second_indochina_war }
+		prerequisite = { focus = VIN_land_reform }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -8
+		y = 1
+		relative_position_id = VIN_victory_in_the_second_indochina_war
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_resource = {
+					type = tungsten
+					amount = 3
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = tungsten
+					amount = 3
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = tungsten
+					amount = 3
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_land_reform_2
+		icon = GFX_focus_generic_aluminum
+		text = "Xuyen Development Programs"
+		prerequisite = { focus = VIN_develop_the_land }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 2
+		relative_position_id = VIN_develop_the_land
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			851 = {
+				is_owned_by = VIN
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			851 = {
+				add_resource = {
+					type = aluminium
+					amount = 18
+				}
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_land_reform_3
+		icon = GFX_focus_generic_steel
+		text = "Land Development Programs II"
+		prerequisite = { focus = VIN_develop_the_land }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -1
+		y = 1
+		relative_position_id = VIN_develop_the_land
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_land_reform_4
+		icon = GFX_goal_generic_oil_refinery
+		text = "Land Development Programs III"
+		prerequisite = { focus = VIN_develop_the_land }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 1
+		y = 1
+		relative_position_id = VIN_develop_the_land
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 6
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 6
+					instant_build = yes
+				}
+			}
+			
+		}
+	}
+	focus = {
+		id = VIN_greater_vietnam
+		icon = GFX_focus_generic_concessions
+		text = "The Greater Vietnam Proyect"
+		prerequisite = { focus = VIN_develop_the_land }
+		prerequisite = { focus = VIN_the_city_of_minh }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 4
+		y = 2
+		relative_position_id = VIN_develop_the_land
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			NOT = {
+				is_ai = yes
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_state_claim = 741
+			add_state_claim = 845
+			add_state_claim = 844
+			add_state_claim = 670
+			add_state_claim = 848
+		}
+	}
+	focus = {
+		id = VIN_against_cambodia
+		icon = GFX_goal_generic_more_territorial_claims
+		text = "Against Cambodia"
+		prerequisite = { focus = VIN_greater_vietnam }
+		prerequisite = { focus = VIN_land_reform_2 }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = -2
+		y = 1
+		relative_position_id = VIN_greater_vietnam
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = CAM
+			}
+		}
+	}
+	focus = {
+		id = VIN_against_laos
+		icon = GFX_goal_generic_major_war
+		text = "Against Laos"
+		prerequisite = { focus = VIN_greater_vietnam }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 2
+		y = 1
+		relative_position_id = VIN_greater_vietnam
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = LAO
+			}
+		}
+	}
+	focus = {
+		id = VIN_eyes_on_siam
+		icon = GFX_goal_generic_attack_allies
+		text = "Eyes On Siam"
+		prerequisite = { focus = VIN_against_cambodia }
+		prerequisite = { focus = VIN_against_laos }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 2
+		relative_position_id = VIN_greater_vietnam
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_state_claim = 724
+			add_state_claim = 289
+		}
+	}
+	focus = {
+		id = VIN_strike_on_siam
+		icon = GFX_goal_generic_territory_or_war
+		text = "Strike On Siam"
+		prerequisite = { focus = VIN_eyes_on_siam }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 1
+		relative_position_id = VIN_eyes_on_siam
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = SIA
+			}
+		}
+	}
+	focus = {
+		id = VIN_the_ancient_empire
+		icon = GFX_focus_usa_focus_on_asia
+		text = "The Glory of the Ancient Empire"
+		prerequisite = { focus = VIN_the_city_of_minh }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 2
+		relative_position_id = VIN_the_city_of_minh
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_stability = 0.5
+		}
+	}
+	focus = {
+		id = VIN_proclaim_the_indochinese_empire
+		icon = GFX_focus_eng_imperial_federation
+		text = "Proclaim the Empire"
+		prerequisite = { focus = VIN_the_ancient_empire }
+		prerequisite = { focus = VIN_strike_on_siam }
+		#mutually_exclusive = { focus = VIN_the_china_autorization }
+		x = 0
+		y = 4
+		relative_position_id = VIN_the_ancient_empire
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			286 = {
+				is_controlled_by = VIN
+				is_owned_by = VIN
+			}
+			741 = {
+				is_controlled_by = VIN
+				is_owned_by = VIN
+			}
+			670 = {
+				is_controlled_by = VIN
+				is_owned_by = VIN
+			}
+			289 = {
+				is_controlled_by = VIN
+				is_owned_by = VIN
+			}
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			set_cosmetic_tag = VIN_empire
+			add_state_core = 724
+			add_state_core = 289
+			add_state_core = 741
+			add_state_core = 845
+			add_state_core = 844
+			add_state_core = 670
+			add_state_core = 848
+		}
+	}
+	focus = {
+		id = VIN_emergency_mill_prod
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Emergency War Production"
+		#prerequisite = { focus = VIN_the_ancient_empire }
+		mutually_exclusive = { focus = VIN_emergency_civ_prod }
+		x = 3
+		y = 1
+		#relative_position_id = VIN_the_ancient_empire
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_mill_prod_2
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Emergency War Production II"
+		prerequisite = { focus = VIN_emergency_mill_prod focus = VIN_emergency_civ_prod }
+		mutually_exclusive = { focus = VIN_emergency_civ_prod_2 }
+		x = 0
+		y = 1
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_mill_prod_3
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Emergency War Production III"
+		prerequisite = { focus = VIN_emergency_mill_prod_2 focus = VIN_emergency_civ_prod_2 }
+		mutually_exclusive = { focus = VIN_emergency_civ_prod_3 }
+		x = 0
+		y = 2
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_mill_prod_4
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Emergency War Production IV"
+		prerequisite = { focus = VIN_emergency_mill_prod_3 focus = VIN_emergency_civ_prod_3 }
+		mutually_exclusive = { focus = VIN_emergency_civ_prod_4 }
+		x = 0
+		y = 3
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_civ_prod
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Emergency Civilian Production"
+		#prerequisite = { focus = VIN_emergency_mill_prod }
+		mutually_exclusive = { focus = VIN_emergency_mill_prod }
+		x = 2
+		y = 0
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_civ_prod_2
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Emergency Civilian Production II"
+		prerequisite = { focus = VIN_emergency_civ_prod focus = VIN_emergency_mill_prod }
+		mutually_exclusive = { focus = VIN_emergency_mill_prod_2 }
+		x = 2
+		y = 1
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_civ_prod_3
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Emergency Civilian Production III"
+		prerequisite = { focus = VIN_emergency_civ_prod_2 focus = VIN_emergency_mill_prod_2 }
+		mutually_exclusive = { focus = VIN_emergency_mill_prod_3 }
+		x = 2
+		y = 2
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_civ_prod_4
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Emergency Civilian Production IV"
+		prerequisite = { focus = VIN_emergency_civ_prod_3 focus = VIN_emergency_mill_prod_3 }
+		mutually_exclusive = { focus = VIN_emergency_mill_prod_4 }
+		x = 2
+		y = 3
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = VIN_emergency_final_production
+		icon = GFX_goal_generic_construct_infrastructure
+		text = "Ultimate Production Effort"
+		prerequisite = { focus = VIN_emergency_civ_prod_4 focus = VIN_emergency_mill_prod_4 }
+		#mutually_exclusive = { focus = VIN_emergency_mill_prod_4 }
+		x = 1
+		y = 4
+		relative_position_id = VIN_emergency_mill_prod
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+			
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 6 }
+			add_offsite_building = { type = arms_factory level = 6 }
+		}
+	}
+	
+}

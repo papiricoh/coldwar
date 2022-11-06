@@ -1,0 +1,24 @@
+state={
+	id=845
+	name="Central Cambodia"
+	history={
+		add_core_of = CAM
+		owner = FRA
+		buildings = {
+			infrastructure = 1
+
+		}
+		1949.1.1 = {
+			owner = CAM
+			controller = FRA
+		}
+
+	}
+	manpower=155234
+	state_category=town
+	provinces={
+		1324 4302 4639 10467 12447 12460 12475 
+	}
+	buildings_max_level_factor=1.000
+	local_supplies=0.000
+}

@@ -1,0 +1,27 @@
+state={
+	id=850
+	name="East Saigon"
+	history={
+		add_core_of = VIN
+		owner = FRA
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 1
+			air_base = 1
+
+		}
+		1949.1.1 = {
+			owner = VIN
+			controller = FRA
+			add_core_of = SVI
+		}
+
+	}
+	provinces={
+		1285 1605 7271 10162 10232 12150 12176 12204 
+	}
+	manpower=346000
+	buildings_max_level_factor=1.000
+	state_category=town
+	local_supplies=0.000
+}

@@ -1,0 +1,142 @@
+USA_cuban_missile_crisis = {                              # This is our category
+	USA_cuban_missile_crisis_timeout = {
+
+		name = "Cuban Misile Crisis Inminent War"
+		icon = generic_prepare_civil_war
+		allowed = { 
+			tag = USA 
+		}                 # This mission is only allowed for Poland. Other countries will not be able to see it or activate it. Checks ONLY at the game's start and when loading a save, meant for optimisation.
+		available = { 
+			OR = {          
+				NOT = {
+					has_country_flag = "Cuban Missile Crisis High Tensions"
+				}  
+				CUB ={
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+		}
+		activation = {
+			has_country_flag = "Ongoing Cuban Missile Crisis"
+			has_country_flag = "Cuban Missile Crisis High Tensions"
+			NOT = { has_country_flag = "Soviet Retreating" }
+			CUB = {
+				has_government = communism
+			}
+			date > 1962.1.1
+		}
+		is_good = no                           # This mission is color coded to be a positive thing (not a crisis)
+		selectable_mission = no                # This mission will complete when the player selects the mission rather than completing automatically
+		days_mission_timeout = 100              # How many days before the mission fails?
+		timeout_effect = {     
+			SOV = {
+				give_guarantee = CUB
+			}
+			declare_war_on = {
+				target = CUB
+				type = annex_everything
+			}               # Lose 50 PP
+		}
+		complete_effect = {                    # What happens when we activate the mission i.e. mission success?
+			add_political_power = 1050               # Gain 50 PP
+		}
+	}
+
+	USA_prepare_bay_of_pigs_invasion = {
+
+		name = "Launch The Bay of Pigs Invasion"
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = "Cuban Missile Crisis High Tensions"
+				has_country_flag = "Soviet Retreating"
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			CUB = {
+				has_government = communism
+			}
+			has_country_flag = "Ongoing Cuban Missile Crisis"
+		}
+
+		complete_effect = {
+			random_list = {
+				90 = {
+					set_country_flag = "Cuban Missile Crisis High Tensions"
+					add_named_threat = { 
+						threat = 15 
+						name = "Bay of Pigs Invasion Fail"
+					}
+				}
+				10 = {
+					CUB = {
+						set_politics = {
+							ruling_party = democratic
+							elections_allowed = no
+						}
+					}
+				}
+			}
+		}
+	}
+	USA_soviet_negociations = {
+
+		name = "Talks with the Soviets"
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			has_country_flag = "Cuban Missile Crisis High Tensions"
+		}
+
+		cost = 25
+		fire_only_once = no
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			CUB = {
+				has_government = communism
+			}
+			has_country_flag = "Ongoing Cuban Missile Crisis"
+		}
+
+		complete_effect = {
+			random_list = {
+				60 = {
+					add_named_threat = { 
+						threat = 5 
+						name = "Failed Soviet Talks"
+					}
+				}
+				40 = {
+					add_named_threat = { 
+						threat = -25 
+						name = "Success in the Soviet Talks"
+					}
+					clr_country_flag = "Cuban Missile Crisis High Tensions"
+					set_country_flag = "Soviet Retreating"
+					##NEWS EVENT END OF THE CUBAN MISSILE CRISIS
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+﻿###########################
+# coldnews Events
+###########################
+
+add_namespace = coldcoldnews
+
+# Stalin's death
+

@@ -1,0 +1,215 @@
+add_namespace = soviet
+
+country_event = {
+	id = soviet.1
+	title = "Choosing an Heir"
+	desc = "The time has come to end the Soviet Union and return to the old power structure, we need to choose an heir to the tsars"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Vladimiro Kirílovich from the Romanov Family"
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vladimiro Kirílovich"
+				desc = "Vladimiro Kirílovich"
+				picture = "Portrait_Vladimiro_Kirílovich.dds"
+				expire = "1972.1.1"
+				ideology = despotism
+				traits = {
+					
+				}
+			}
+		}
+	}
+	option = {
+		name = "Louis Ferdinand of Prussia"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			create_country_leader = {
+				name = "Louis Ferdinand"
+				desc = "Louis Ferdinand of Prussia"
+				picture = "Portrait_Louis_Ferdinand.dds"
+				expire = "1992.1.1"
+				ideology = despotism
+				traits = {
+					
+				}
+			}
+		}	
+	}
+}
+country_event = {
+	id = soviet.2
+	title = "First Union Border Talks"
+	desc = "Today our leaders of all the socialist republics want to carry out a restructuring, some smaller republics want to be part of an intermediate administrative entity while other republics feel comfortable with the current situation"
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Integrate the smaller republics into the Russian SSR"
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = "Grant larger autonomy to all the republics"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			add_ideas = SOV_republic_autonomy_1
+		}	
+	}
+}
+country_event = {
+	id = soviet.3 #death of Jrushchov
+	title = "The Death Of Jrushchov"
+	desc = "Tonight our beloved leader passed away in his personal apartment in moscow"
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		has_country_leader = {
+			name = "Nikita Jrushchov"
+			ruling_only = yes
+		}
+		date > 1971.9.11
+		date < 1972.1.1
+		has_government = communism
+	}
+
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = politics.1.a
+		hidden_effect = {
+			SOV = {
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "Leonid Brezhnev"
+					desc = "POLITICS_BREZHNEZ_DESC"
+					picture = "Portrait_Leonid_Brezhnev.dds"
+					expire = "1982.1.1"
+					ideology = marxism
+					traits = {
+						
+					}
+				}
+			}
+			
+		}
+	}
+}
+country_event = {
+	id = soviet.4
+	title = "The USSR offers us an alliance"
+	desc = "Today the Soviet ambassador has offered an alliance to this great country of ours, how should we respond?"
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "We will cooperate with the soviets for the glory of the communism"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			SOV = {
+				add_to_faction = PRC
+			}
+		}
+	}
+	option = {
+		name = "We will cooperate with the soviets but without any obligations"
+		hidden_effect = {
+			SOV = {
+				country_event = {id = soviet.a4}
+			}
+		}	
+	}
+}
+country_event = {
+	id = soviet.a4
+	title = "The PRC has denied our requests"
+	desc = "The PRC has denied our requests, have argued that their socialism is very different from ours"
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Damn revisionists"
+		hidden_effect = {
+			
+		}
+	}
+}
+country_event = {
+	id = soviet.5
+	title = "The Soviets prepare to invade China"
+	desc = "The Soviets have launched a campaign of claims in mainland China, we must immediately intervene and seize some ports"
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Prepare several invasion teams, the ports are ours"
+		hidden_effect = {
+			USA = {
+				transfer_state = 743
+				transfer_state = 745
+				transfer_state = 728
+				transfer_state = 591
+
+			}
+			news_event = {
+				id = news.1
+			}
+		}
+	}
+	option = {
+		name = "We will do nothing"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+country_event = {
+	id = soviet.6
+	title = "The Taiwan Question"
+	desc = "Taiwan is an island inhabited by the enemies of the Chinese revolution, we must be forceful with our decision"
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "We have more important problems at home"
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = "War is it"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			PRC = {declare_war_on = {
+				target = CHI
+				type = annex_everything
+			}}
+			declare_war_on = {
+				target = CHI
+				type = annex_everything
+			}
+			
+		}	
+	}
+}

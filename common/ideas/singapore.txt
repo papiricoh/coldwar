@@ -1,0 +1,42 @@
+ideas = {
+	country = {
+		SIN_british_hate = {
+			removal_cost = -1
+			allowed = {
+				original_tag = SIN
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = can_patriation
+		
+			modifier = {
+				army_org_Factor = 0.05
+				planning_speed = 0.25
+			}
+
+		}	
+		SIN_emergent_economy = {
+			removal_cost = -1
+			allowed = {
+				original_tag = SIN
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = economic_growth
+		
+			modifier = {
+				stability_factor = 0.10
+				economy_cost_factor = 0.5
+				production_factory_max_efficiency_factor = 0.1
+				global_building_slots_factor = 0.10
+			}
+
+		}	
+	}
+}

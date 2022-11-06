@@ -1,0 +1,22 @@
+################
+##### USA ######
+################
+
+USA_cuban_missile_crisis = {
+	
+	allowed = {
+		original_tag = USA
+	}
+	priority = 185
+}
+
+USA_congress = {
+	icon = usa_congress
+	allowed = {
+		original_tag = USA
+	}
+
+	scripted_gui = usa_congress_decision_ui	
+
+	priority = 85
+}

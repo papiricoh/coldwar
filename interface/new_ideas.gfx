@@ -1,0 +1,49 @@
+spriteTypes = {	
+
+	#### COLD WAR ideas
+
+	spriteType = {
+		name = "GFX_idea_security_council"
+		texturefile = "gfx/interface/ideas/idea_security_council.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_NATO_doctrine"
+		texturefile = "gfx/interface/ideas/idea_NATO_doctrine.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_marshall_plan"
+		texturefile = "gfx/interface/ideas/idea_marshall_plan.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_warsaw_pact"
+		texturefile = "gfx/interface/ideas/idea_warsaw_pact.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_free_press"
+		texturefile = "gfx/interface/ideas/idea_free_press.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_controled_press"
+		texturefile = "gfx/interface/ideas/idea_controled_press.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_censored_press"
+		texturefile = "gfx/interface/ideas/idea_censored_press.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_hyper_censored_press"
+		texturefile = "gfx/interface/ideas/idea_hyper_censored_press.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_ENG_commonwealth_member"
+		texturefile = "gfx/interface/ideas/ENG_commonwealth_member.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_ENG_Elizabeth_II"
+		texturefile = "gfx/interface/ideas/ENG_Elizabeth_II.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_EU"
+		texturefile = "gfx/interface/ideas/EU.dds"
+	}
+}

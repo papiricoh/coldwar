@@ -1,0 +1,135 @@
+bookmarks = {
+	bookmark = {
+		name = "The New World Order"
+		desc = "After the fall of Nazi Germany and the Japanese empire, two superpowers have risen to power, dominating the world, the Soviet Union and the United States compete to have the maximum number of allies"
+		date = 1949.1.1.12
+		picture = "GFX_select_date_1949"
+		default_country = "USA"
+		default = yes
+		
+		"USA"={
+			history = "At the end of World War II, the United States of America began a series of projects to strengthen and repair the European economy. Meanwhile, in the presidency, the tension against the communist ideology began to be felt."
+			ideology = democratic
+			ideas = {
+				USA_demobilization
+				NATO_doctrine
+				INTERNATIONAL_nuclear_club
+			}
+			focuses = {
+				USA_war_plan_black
+				USA_limited_intervention
+				USA_reestablish_the_gold_standard
+			}
+		}
+		"ENG"={
+			history = "The United Kingdom has had various problems with the reconstruction of its country, the colonies are in open rebellion but various post-war agreements have achieved a peaceful secession with the dominions."
+			ideology = democratic
+			ideas = {
+				USA_demobilization
+				NATO_doctrine
+				USA_marshall_plan
+			}
+			focuses = {
+				tizard_mission_focus
+				ENG_war_with_germany
+				ENG_war_with_italy
+			}
+		}
+		"FRA"={
+			history = "The French Republic is in a period of colonial decline, as the main problem the French have a rebellion in Indochina that is ending the colonial garrisons"
+			ideology = democratic
+			ideas = {
+				WEST_destroyed_europe
+				NATO_doctrine
+				USA_marshall_plan
+			}
+			focuses = {
+				FRA_integrate_algelia
+				FRA_marshall_plan_ideas
+				FRA_anti_communism_operations
+			}
+		}
+		"CHI"={
+			history = "The Kuomintang is in a civil war against the communists, with several uprisings around the country in favor of the communists."
+			ideology = neutrality
+			ideas = {
+				CHI_incompetent_officers
+				CHI_hyper_inflation_1
+				CHI_army_corruption_2
+			}
+			focuses = {
+			}
+		}
+		"PRC"={
+			history = "The Chinese Communists have emerged victorious from World War II, with the momentum they now have they plan to completely unify China."
+			ideology = communism
+			ideas = {
+				PRC_low_popular_support_3
+				PRC_mobile_warfare
+				SOV_support_in_china_communism
+			}
+			focuses = {
+			}
+		}
+		"DDR"={
+			history = "After the separation of Germany between the victorious countries, the East and the West decided to try a neutral unification of Germany, finally the reunification failed, leaving two opposing states in ideology in the former German territory."
+			ideology = communism
+			ideas = {
+				Comunist_destoyed_europe
+			}
+			focuses = {
+			}
+		}
+		"SOV"={
+			history = "In order to spread communism throughout the world, the Soviet Union is recovering militarily and culturally to spread communism faster and more efficiently, with the problem of the United States as its logical enemy."
+			ideology = communism
+			ideas = {
+				home_of_revolution
+				Comunist_destoyed_europe
+				INTERNATIONAL_nuclear_club
+			}
+			focuses = {
+				SOV_behead_the_snake
+				SOV_father_of_nations
+				SOV_the_supreme_soviet
+			}	
+		}
+
+		"---"={
+			history = "OTHER_GATHERING_STORM_DESC"
+		}
+
+
+		# minors from DLC ####
+		"VIN"={
+			minor = yes
+			history = "The people of Vietnam are in open rebellion and in formal war against their French colonists, Indochina is burning and Ho Chi Minh knows that this is his opportunity to continue the expansion of communism"
+			ideology = communism
+			ideas = {
+				YUG_anti_communist
+				VIN_vietnam_hard_fight
+			}
+			focuses = {
+				VIN_first_indochina_war
+				VIN_proclaim_the_indochinese_empire
+				VIN_victory_in_the_second_indochina_war
+			}
+		}
+		"WGR"={
+			minor = yes
+			history = "WGR_GATHERING_STORM_DESC"
+			ideology = democratic
+			ideas = {
+				USA_marshall_plan
+				WEST_destroyed_europe
+			}
+			focuses = {
+
+			}
+		}
+		effect = {
+			randomize_weather = 22345 # <- Obligatory in every bookmark !
+			#123 = { rain_light = yes }
+		}
+	}
+}

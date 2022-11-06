@@ -1,0 +1,28 @@
+state={
+	id=871
+	name="Central Biafra"
+	history={
+		owner = ENG
+		add_core_of = NGA
+		buildings = {
+			infrastructure = 2
+			arms_factory = 0
+			industrial_complex = 1
+
+		}
+		
+		victory_points = {
+			13270 15 
+		}
+		victory_points = {
+			13261 10 
+		}
+	}
+	provinces={
+		8034 13256 13261 13262 13263 13270 
+	}
+	manpower=1350000
+	buildings_max_level_factor=1.000
+	state_category=large_town
+	local_supplies=0.000
+}

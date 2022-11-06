@@ -1,0 +1,374 @@
+add_namespace = politics
+
+country_event = {
+	id = politics.1 #death of stalin
+	title = politics.1.t
+	desc = politics.1.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		date > 1953.3.5 # Trigger at some point after 1936 elections
+		date < 1960.1.1
+		has_government = communism
+	}
+
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = politics.1.a
+		hidden_effect = {
+			SOV = {
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "Nikita Jrushchov"
+					desc = "POLITICS_NIKITA_JRUSHCHOV_DESC"
+					picture = "Portrait_Nikita_Jrushchov.dds"
+					expire = "1974.1.1"
+					ideology = marxism
+					traits = {
+						
+					}
+				}
+				complete_national_focus = SOV_stalin_is_dead
+			}
+			news_event = {
+					id = news.337
+					days = 10
+				}
+		}
+	}
+}
+country_event = {
+	id = politics.2
+	title = politics.2.t
+	desc = politics.2.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+		date > 1953.1.20 # Trigger at some point after 1953 elections
+		date < 1960.1.1
+		has_government = democratic
+	}
+
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = politics.2.a
+		hidden_effect = {
+			USA = {
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "Dwight D. Eisenhower"
+					desc = "POLITICS_EISENHOWER_DESC"
+					picture = "Portrait_USA_Dwight_D_Eisenhower.dds"
+					expire = "1969.1.1"
+					ideology = conservatism
+					traits = {
+						
+					}
+				}
+				
+			}
+			news_event = {
+				id = news.338
+				days = 10
+			}
+		}
+	}
+}
+country_event = {
+	id = politics.3
+	title = politics.3.t
+	desc = politics.3.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+		date > 1961.1.20 # Trigger at some point after 1936 elections
+		date < 1960.1.1
+		has_government = democratic
+	}
+
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = politics.3.a
+		hidden_effect = {
+			USA = {
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "John F. Kennedy"
+					desc = "POLITICS_JOHN_F_KENNEDY_DESC"
+					picture = "Portrait_USA_John_F_Kennedy.dds"
+					expire = "1963.5.29"
+					ideology = liberalism
+					traits = {
+						
+					}
+				}
+				
+			}
+			news_event = {
+				id = news.339
+				days = 10
+			}
+		}
+	}
+}
+country_event = {
+	id = politics.taiwan #taiwan cesion and tibet annexation
+	title = politics.taiwan.t
+	desc = politics.taiwan.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PRC
+		date < 1960.1.1
+		has_government = communism
+		PRC = {
+			owns_state = 524
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = politics.taiwan.a
+		hidden_effect = {
+			
+			annex_country = {
+				target = TIB
+				transfer_troops = no
+			}
+			PRC = {
+				white_peace = CHI
+				set_cosmetic_tag = PRC_proclaimed
+				set_capital = 608
+			}
+			news_event = {
+				id = news.340
+				days = 10
+			}
+			CHI = {
+				transfer_state = 524
+				diplomatic_relation = {
+					country = PRC
+					relation = non_aggression_pact
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = politics.4
+	title = "Absorb the rebels"
+	desc = "We need to absorb the rebels"
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	trigger = {
+		tag = GRE
+		country_exists = RGE
+		RGE = {
+			NOT = {has_war_with = GRE}
+		}
+		GRE = {
+			has_government = democratic
+			NOT = {has_war_with = RGE}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 5	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Lets go"
+		hidden_effect = {
+			GRE = {
+				annex_country = {
+					target = RGE
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = politics.5
+	title = "The Vietnam Ofensive"
+	desc = "Its the moment to strike to the capitalist scum"
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	trigger = {
+		tag = VIN
+		country_exists = VIN
+		country_exists = SVI
+		VIN = {
+			has_government = communism
+			NOT = {has_war_with = SVI}
+
+		}
+		VIN = {
+			has_country_flag = VIN_focus_on_south
+
+		}
+		SVI = {
+			has_government = democratic
+			NOT = {has_war_with = VIN}
+		}
+		date > 1955.11.1
+		date < 1970.11.1
+	}
+
+	mean_time_to_happen = {
+		days = 5	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Lets go"
+		hidden_effect = {
+			VIN = {
+				declare_war_on = {
+					target = SVI
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = politics.6
+	title = "The Hungarian Revolution"
+	desc = "20,400 protesters convened next to the statue of József Bem have started a revolution that have overthrown the communist goverment"
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 5	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "We have to act"
+		hidden_effect = {
+			HUN = {
+				start_civil_war = {
+					ruling_party = communism
+					ideology = democratic
+					size = 0.3
+					only_own_territory = yes
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = politics.7
+	title = "Soviet Aid"
+	desc = "The soviets have offered to make a series of economic aid to rival our neighbor"
+	picture = GFX_report_event_tank_factory
+	
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 5	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Thanks to our allies"
+		hidden_effect = {
+			
+		}
+	}
+}
+country_event = {
+	id = politics.8
+	title = "Soviet missiles sighted in Cuba"
+	desc = "Tonight a reconnaissance plane has made a photo of Soviet missiles reaching the Cuban coast"
+	picture = GFX_report_event_tank_factory
+	
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 5	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "This is a big problem"
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = SOV
+				modifier = missile_threat
+			}
+		}
+	}
+}
+country_event = {
+	id = politics.9
+	title = "The Berlin Wall"
+	desc = "The immigration of the eastern population to the capitalist countries is constantly increasing, we must do something to stop this threat to our economy"
+	picture = GFX_report_event_tank_factory
+	
+	trigger = {
+		tag = SOV
+		country_exists = WGR
+		country_exists = DDR
+		date > 1961.1.1
+		date < 1962.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 5	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Build the wall"
+		hidden_effect = {
+			DDR = {
+				64 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						instant_build = yes
+						province = {
+							all_provinces = yes
+						}
+					}
+				}
+				792 = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						instant_build = yes
+						province = {
+							all_provinces = yes
+						}
+					}
+				}
+				add_opinion_modifier = {
+					target = WGR
+					modifier = berlin_wall
+				}
+			}
+		}
+	}
+}

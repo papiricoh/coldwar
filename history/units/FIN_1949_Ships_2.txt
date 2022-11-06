@@ -1,0 +1,24 @@
+units = {
+
+	##### NAVAL UNITS #####
+	fleet = {
+		name = "Suomen Merivoimat"
+		naval_base = 11105 # Helsinki	
+		task_force = {					
+			name = "Import Destroyers"				
+			location =  11105 # Helsinki
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+			ship = { definition = submarine equipment = { submarine_1 = { amount = 1 owner = FIN } } }
+
+
+		}					
+	}
+}

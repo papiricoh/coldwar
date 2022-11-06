@@ -1,0 +1,256 @@
+add_namespace = korea
+
+country_event = {
+	id = korea.1
+	title = korea.1.t
+	desc = korea.1.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+		has_defensive_war = no
+		NOT = { has_government = communism }
+		date > 1949.8.15 # Trigger at some point after 1936 elections
+		date < 1960.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = korea.1.a
+		hidden_effect = {
+			KOR = {
+				transfer_state = 838
+				transfer_state = 525
+				add_ideas = {
+					KOR_anti_communist
+				}
+				load_oob = "KOR_war"
+			}
+			SOV = {
+				country_event = {
+					id = korea.2
+					days = 10
+				}
+			}
+		}
+	}
+	option = {
+		name = korea.1.b
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+
+country_event = {
+	id = korea.2
+	title = korea.2.t
+	desc = korea.2.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		date > 1949.8.28
+		date < 1960.1.1
+	}
+	
+	option = { 
+		name = korea.2.a
+		hidden_effect = {
+			PRK = {
+				transfer_state = 527
+				transfer_state = 837
+				add_ideas = {
+					YUG_anti_communist
+				}
+				load_oob = "PRC_1949"
+			}
+		}
+	}
+	option = { 
+		name = korea.2.b
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+
+country_event = {
+	id = korea.3
+	title = korea.3.t
+	desc = korea.3.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PRK
+		date > 1950.6.25
+		date < 1960.1.1
+		PRC = {
+			NOT = {has_war = yes}
+		}
+		country_exists = PRC
+		country_exists = KOR
+		838 = {
+			is_owned_by = KOR
+		}
+		837 = {
+			is_owned_by = PRK
+		}
+	}
+	
+	option = { 
+		name = korea.3.a
+		hidden_effect = {
+			PRK = {
+				declare_war_on = {
+					target = KOR
+					type = annex_everything
+				}
+			}
+		}
+	}
+	option = { 
+		name = korea.3.b
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+country_event = {
+	id = korea.4
+	title = "Korean War Aid"
+	desc = "Our Korean allies are suffering a communist invasion from the north, it is our duty to help them"
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+		date > 1950.6.25
+		date < 1960.1.1
+		KOR = {
+			has_war = yes
+		}
+		PRK = {
+			has_war = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 30	# Historical outbreak time after the invasion
+	}
+	option = { 
+		name = "We have to help our allies"
+		hidden_effect = {
+			KOR = {
+				load_oob = "KOR_war"
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 50000
+					producer = USA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_equipment_3
+					amount = 6000
+					producer = USA
+				}
+			}
+		}
+	}
+	option = { 
+		name = "I will not let any US man die on the battlefield"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+country_event = {
+	id = korea.5
+	title = "Korean Armistice"
+	desc = "Our Korean enemies are revolting in the ocupied zones, also china threats with joining the war so we need to solve the situation"
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = KOR
+		OR = {
+			AND = {
+				PRK = { 
+					has_government = democratic
+				}
+				date < 1960.1.1
+			}
+			AND = {
+				tag = KOR
+				date < 1960.1.1
+				527 = {
+					is_owned_by = KOR
+				}
+			}
+			AND = {
+				date < 1960.1.1
+				date > 1953.1.1
+				country_exists = KOR
+				country_exists = PRK
+				KOR = {
+					has_war = yes
+				}
+				PRK = {
+					has_war = yes
+				}
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1	# Historical outbreak time after the invasion
+	}
+	option = { 
+		name = "We have to reach peace"
+		hidden_effect = {
+			KOR = {
+				end_puppet = PRK
+				transfer_state = 837
+			}
+			PRK = {
+				transfer_state = 527
+				transfer_state = 838
+				set_popularities = {
+					democratic = 0
+					neutrality = 0
+					fascism = 0
+					communism = 100
+				}
+				set_politics = {
+					ruling_party = communism
+				}
+				white_peace = KOR
+			}
+			
+		}
+	}
+	option = { 
+		name = "We'll fight"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			PRC = {
+				declare_war_on = {
+					target = KOR
+					type = annex_everything
+				}
+			}
+		}	
+	}
+}

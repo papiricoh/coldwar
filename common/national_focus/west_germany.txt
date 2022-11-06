@@ -1,0 +1,355 @@
+﻿focus_tree = {
+	id = west_germany_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = WGR
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1100 }
+
+	focus = {
+		id = WGR_repair_the_country
+		icon = GFX_goal_FRA_marshall_plan
+		text = "Marshall Repair Programs"
+		#prerequisite = { focus = ITA_ethiopian_war_logistics }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 18
+		y = 0
+		#relative_position_id = ITA_ethiopian_war_logistics
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		bypass = {
+			
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = DDR_restore_europe_1
+				days = 680
+			}
+		}
+	}
+	focus = {
+		id = WGR_heartland
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "The German Industry"
+		prerequisite = { focus = WGR_repair_the_country }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 1
+		relative_position_id = WGR_repair_the_country
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			51 = {
+				add_extra_state_shared_building_slots = 8
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = WGR_fortify_the_courtain
+		icon = GFX_goal_generic_construct_military
+		text = "Fortify The Courtain"
+		prerequisite = { focus = WGR_heartland }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 1
+		relative_position_id = WGR_heartland
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			58 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			59 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			55 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			54 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = WGR_diplomatic_focus
+		icon = GFX_focus_generic_diplomatic_treaty
+		text = "Focus on the Diplomacy"
+		prerequisite = { focus = WGR_heartland }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 6
+		y = 1
+		relative_position_id = WGR_heartland
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = WGR_join_nato
+		icon = GFX_focus_generic_nato
+		text = "Request to Join NATO"
+		prerequisite = { focus = WGR_diplomatic_focus }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 1
+		relative_position_id = WGR_diplomatic_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			USA = {country_event = { id = germany.1 }}
+		}
+	}
+	focus = {
+		id = WGR_european_union
+		icon = GFX_focus_generic_european_union
+		text = "The European Proposal"
+		prerequisite = { focus = WGR_diplomatic_focus }
+		prerequisite = { focus = WGR_fortify_the_courtain }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = -3
+		y = 1
+		relative_position_id = WGR_diplomatic_focus
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = FRA
+						tag = BEL
+						tag = HOL
+						tag = ITA
+						tag = SPR
+						tag = LUX
+					}
+					has_government = democratic
+				}
+				country_event = { id = germany.3 }
+			}
+			add_ideas = { EC_member }
+		}
+	}
+	focus = {
+		id = WGR_berlin_wall_patrols
+		icon = GFX_focus_generic_west_germany
+		text = "Berlin Wall Patrols"
+		prerequisite = { focus = WGR_fortify_the_courtain }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 1
+		relative_position_id = WGR_fortify_the_courtain
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			division_template = {
+				name = "Border Corps"
+					priority = 1
+					division_names_group = GER_INF_01
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+			}
+			835 = {
+				create_unit = {
+					division = "name = \"I/Berlin Border Corps\" division_template = \"Border Corps\" start_experience_factor = 0.7" 
+					owner = WGR
+				}
+				create_unit = {
+					division = "name = \"II/Berlin Border Corps\" division_template = \"Border Corps\" start_experience_factor = 0.7" 
+					owner = WGR
+				}
+				create_unit = {
+					division = "name = \"III/Berlin Border Corps\" division_template = \"Border Corps\" start_experience_factor = 0.7" 
+					owner = WGR
+				}
+			}
+		}
+	}
+	focus = {
+		id = WGR_berlin_wall_defense
+		icon = GFX_goal_generic_construct_military
+		text = "Berlin Defese Infrastructure"
+		prerequisite = { focus = WGR_berlin_wall_patrols }
+		#mutually_exclusive = { focus = ITA_italy_first }
+		x = 0
+		y = 2
+		relative_position_id = WGR_berlin_wall_patrols
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			835 = {
+				add_building_construction = {
+					type = bunker
+					level = 8
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+		}
+	}
+}

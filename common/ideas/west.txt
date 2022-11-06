@@ -1,0 +1,182 @@
+ideas = {
+	country = {
+		NATO_doctrine = {
+			removal_cost = -1
+			name = "NATO Doctrine"
+
+			picture = NATO_doctrine
+		
+			modifier = {
+				ai_call_ally_desire_factor = -400
+				ai_get_ally_desire_factor = -400
+
+				command_power_gain_mult = 0.5
+				defence = 0.02
+				democratic_drift = 0.15
+			}
+		}
+		USA_demobilization = {
+			removal_cost = -1
+			name = "National Demobilization"
+
+			picture = FRA_factory_strikes
+		
+			modifier = {
+				production_factory_efficiency_gain_factor = -0.05	
+				production_factory_max_efficiency_factor = -0.15 
+				industrial_capacity_factory = -0.1
+				recruitable_population_factor = -0.6
+				war_support_factor = -0.3
+			}
+		}
+		USA_marshall_plan = {
+			removal_cost = -1
+			name = "Marshall Plan"
+
+			picture = marshall_plan
+		
+			modifier = {
+				industry_repair_factor = 0.8 
+				production_speed_buildings_factor = 0.45
+				supply_node_range = 0.15
+			}
+		}
+		WEST_destroyed_europe = {
+			removal_cost = -1
+			name = "Damaged Continental Europe"
+
+			picture = chi_hyper_inflation
+		
+			modifier = {
+				industry_repair_factor = -0.5 
+				production_speed_buildings_factor = -0.25
+				army_core_defence_factor = -0.2
+				army_core_attack_factor = -0.15
+				local_resources_factor = -0.6
+				monthly_population = -0.3
+				war_support_factor = -0.8
+			}
+		}
+		WEST_pacifist_ways = {
+			removal_cost = -1
+			name = "Pacifist State"
+
+			picture = civilian_economy
+		
+			modifier = {
+				generate_wargoal_tension = 0.9
+				ai_focus_aggressive_factor = 0.2	
+				ai_focus_defense_factor = 0.8	
+				ai_focus_peaceful_factor = 0.7
+			}
+		}
+		WEST_anticommunist = {
+			removal_cost = -1
+			name = "Anti-Communist Propaganda"
+
+			picture = generic_democratic_drift_bonus
+		
+			modifier = {
+				communism_drift = -0.03
+			}
+		}
+		WEST_colonial_conscription = {
+			removal_cost = -1
+			name = "Colonial Conscription"
+
+			picture = generic_manpower_bonus
+		
+			modifier = {
+				local_non_core_manpower = 0.2
+			}
+		}
+		WEST_colonial_trade = {
+			removal_cost = -1
+			name = "Colonial Trade Act"
+
+			picture = free_trade
+		
+			modifier = {
+				trade_opinion_factor = 0.25
+				extra_trade_to_target_factor = 0.2
+			}
+		}
+		USA_marshall_plan_2 = {
+			removal_cost = -1
+			name = "Renewed Marshall Plan"
+
+			picture = FRA_market_dynamism
+		
+			modifier = {
+				consumer_goods_factor = -0.3
+				production_speed_industrial_complex_factor = 0.75 
+			}
+		}
+		FRA_NATO_doctrine = {
+			removal_cost = -1
+			name = "French NATO Doctrine"
+
+			picture = YUG_federal_defense_council
+		
+			modifier = {
+				ai_call_ally_desire_factor = -400
+				ai_get_ally_desire_factor = -400
+
+				command_power_gain_mult = 0.5
+				defence = 0.15
+			}
+		}
+		ENG_commonwealth_member = {
+			removal_cost = -1
+			name = "Commonwealth Member"
+
+			picture = ENG_commonwealth_member
+		
+			modifier = {
+				trade_opinion_factor = 0.35	
+				ai_badass_factor = -0.15
+			}
+		}
+		ENG_imperial_sentiment = {
+			removal_cost = -1
+			name = "Imperial Sentiment"
+
+			picture = eng_the_sun_never_sets
+		
+			modifier = {
+				stability_weekly_factor = 0.3
+			}
+		}
+		ENG_Elizabeth_II = {
+			removal_cost = -1
+			name = "Elizabeth II"
+
+			picture = ENG_Elizabeth_II
+		
+			modifier = {
+				stability_weekly_factor = 0.5
+			}
+		}
+		EC_member = {
+			removal_cost = -1
+			name = "European Community Member"
+
+			picture = EU
+		
+			modifier = {
+				stability_weekly_factor = 0.5
+				conscription_factor = 0.15
+			}
+		}
+		UK_NHS = {
+			removal_cost = -1
+			name = "National Health Service"
+
+			picture = isolation
+		
+			modifier = {
+				stability_weekly_factor = 0.15
+			}
+		}
+	}
+}

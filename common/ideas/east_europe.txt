@@ -1,0 +1,309 @@
+ideas = {
+	country = {
+		YUG_anti_communist = {
+			removal_cost = -1
+			name = "Anti-internacionalism"
+
+			picture = generic_communism_drift_bonus
+		
+			modifier = {
+				communism_drift = 0.15
+				join_faction_tension = 1
+				ai_get_ally_desire_factor = -200
+			}
+
+		}	
+		KOR_anti_communist = {
+			removal_cost = -1
+			name = "Anti-internacionalism"
+
+			picture = generic_democratic_drift_bonus
+		
+			modifier = {
+				democratic_drift = 0.15
+				join_faction_tension = 1
+				ai_get_ally_desire_factor = -200
+			}
+
+		}	
+		CZE_communist = {
+			name = "Communism Foreign Infuence"
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+		
+			modifier = {
+				communism_drift = 0.25
+			}
+
+		}
+		SOV_free_prisoners = {
+			removal_cost = -1
+
+			picture = generic_spy_political
+		
+			modifier = {
+				encryption_factor = 0.1
+			}
+
+		}
+
+		DDR_restore_europe_1 = {
+			name = "Restorer of the industry"
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+		
+			modifier = {
+				industrial_capacity_factory = 0.3
+				industry_repair_factor = 0.1
+				production_speed_industrial_complex_factor = 0.05
+			}
+		}
+
+		DDR_railway_reestructuration = {
+			name = "Railway Focus"
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+		
+			modifier = {
+				production_speed_rail_way_factor = 0.5
+			}
+		}
+
+		AUS_total_neutrality = {
+			name = "Total Neutrality"
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+		
+			modifier = {
+				join_faction_tension = 4
+			}
+		}
+		
+		DDR_democratic_aspirations = {
+			name = "Democratic Aspirations"
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+		
+			modifier = {
+				democratic_drift = 0.05
+			}
+		}
+		
+		SOV_kgb = {
+			name = "KGB"
+			removal_cost = -1
+
+			picture = generic_spy_intel
+		
+			modifier = {
+				decryption_factor = 0.25
+			}
+		}
+
+		WGR_berlin_wall = {
+			name = "Berlin Wall"
+			removal_cost = -1
+
+			picture = generic_fortify_the_borders
+		
+			modifier = {
+				democratic_acceptance = 50
+				communism_acceptance = -50
+				conscription_factor = -0.3
+			}
+		}
+		DDR_berlin_wall = {
+			name = "Berlin Wall"
+			removal_cost = -1
+
+			picture = generic_fortify_the_borders
+		
+			modifier = {
+				democratic_acceptance = -50
+				communism_acceptance = 50
+				conscription_factor = 0.3
+			}
+		}
+		SOV_reorganized_union = {
+			name = "Reorganized Union"
+			removal_cost = -1
+
+			picture = generic_build_infrastructure
+		
+			modifier = {
+				production_speed_rail_way_factor = 0.5 
+				production_speed_industrial_complex_factor = 0.15
+			}
+		}
+		SOV_economic_prosperity_program = {
+			name = "Economic Prosperity Program"
+			removal_cost = -1
+
+			picture = can_wartime_prices_and_trade_board
+		
+			modifier = {
+				consumer_goods_factor = 0.6	
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				stability_weekly_factor = 0.3
+				war_support_weekly_factor = -0.1
+			}
+		}
+		SOV_destalinization = {
+			name = "Destalinization"
+			removal_cost = -1
+
+			picture = generic_communist_army
+		
+			modifier = {
+				drift_defence_factor = -0.05
+				democratic_acceptance = 20
+			}
+		}
+		SOV_atomic_bomb_production = {
+			name = "Atomic Bomb Production Act"
+			removal_cost = -1
+
+			picture = combined_bomber_offensive
+		
+			modifier = {
+				nuclear_production_factor = 0.45
+			}
+		}
+		EAST_comecon = {
+			name = "Comecon"
+			removal_cost = -1
+
+			picture = home_of_revolution
+		
+			modifier = {
+				political_advisor_cost_factor = -0.5
+				political_power_factor = 0.15	
+				communism_acceptance = 75
+			}
+		}
+		EAST_warsaw_pact_doctrine = {
+			name = "Warsaw Pact Doctrine"
+			removal_cost = -1
+
+			picture = warsaw_pact
+		
+			modifier = {
+				ai_call_ally_desire_factor = -400
+			}
+		}
+		SOV_soviet_military_advisors = {
+			name = "Soviet Military Advisors"
+			removal_cost = -1
+
+			picture = generic_armor
+		
+			modifier = {
+				planning_speed = 0.2
+			}
+		}
+		SOV_african_communist = {
+			name = "Communist Foreign Infuence"
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+		
+			modifier = {
+				communism_drift = 0.01
+				communism_acceptance = 10
+			}
+
+		}
+		SOV_cuban_missile_crisis = {
+			name = "Missiles in Cuba"
+			removal_cost = -1
+
+			picture = air_war_plans_division_focus
+		
+			modifier = {
+				air_range_factor = 0.5
+			}
+
+		}
+		SOV_albanian_independence = {
+			name = "Albanian Treason"
+			removal_cost = -1
+
+			picture = anti_soviet_pact
+		 
+			modifier = {
+				war_support_factor = 0.1
+				war_support_weekly_factor = 0.3
+			}
+
+		}
+		SOV_republic_autonomy_1 = {
+			name = "Low Republican Autonomy"
+			removal_cost = -1
+
+			picture = generic_democratic_opposition
+		 
+			modifier = {
+				war_support_factor = 0.025
+				political_power_factor = -0.1
+			}
+
+		}
+		Comunist_destoyed_europe = {
+			name = "Damaged Europe"
+			removal_cost = -1
+
+			picture = generic_wall_line
+		
+			modifier = {
+				industrial_capacity_factory = -0.5
+				industry_repair_factor = -0.2
+				production_speed_industrial_complex_factor = -0.15 
+				army_core_defence_factor = -0.25
+				army_core_attack_factor = -0.1
+				war_support_factor = -0.7
+				local_resources_factor = -0.6
+				
+			}
+		}
+		Comunist_destoyed_europe_2 = {
+			name = "Damaged Europe"
+			removal_cost = -1
+
+			picture = generic_wall_line
+		
+			modifier = {
+				industrial_capacity_factory = -0.25
+				industry_repair_factor = -0.1
+				production_speed_industrial_complex_factor = -0.075 
+				army_core_defence_factor = -0.15
+				army_core_attack_factor = -0.05
+				war_support_factor = -0.45
+				local_resources_factor = -0.3
+				
+			}
+		}
+		Comunist_destoyed_europe_3 = {
+			name = "Damaged Europe"
+			removal_cost = -1
+
+			picture = generic_wall_line
+		
+			modifier = {
+				industrial_capacity_factory = -0.15
+				industry_repair_factor = -0.05
+				production_speed_industrial_complex_factor = -0.05 
+				army_core_defence_factor = -0.1
+				army_core_attack_factor = -0.05
+				war_support_factor = -0.35
+				local_resources_factor = -0.15
+				
+			}
+		}
+	}
+}

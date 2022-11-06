@@ -1,0 +1,31 @@
+state={
+	id=842
+	name="Gaza"
+	history={
+		owner = ENG
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			air_base = 1
+			4088 = {
+				naval_base = 2
+
+			}
+
+		}
+		add_core_of = PAL
+		add_core_of = ISR
+		1949.1.1 = {
+			owner = EGY
+
+		}
+
+	}
+	provinces={
+		4088 
+	}
+	manpower=120000
+	buildings_max_level_factor=1.000
+	state_category=rural
+	local_supplies=0.000
+}

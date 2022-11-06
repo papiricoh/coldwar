@@ -1,0 +1,154 @@
+ideas = {
+
+	liberty = {
+		law = yes
+		use_list_view = yes
+
+		hyper_censored_press = {
+			name = "Hyper-Censored Press"
+
+			picture = hyper_censored_press
+
+			cost = 150
+			removal_cost = -1
+			level = 4
+
+			available = {
+				OR = {
+					AND = {
+						NOT = { has_government = democratic }
+						NOT = { has_government = neutrality }
+					}
+					has_war = yes 
+				}
+			}
+
+			ai_will_do = {
+				factor = -1
+				modifier = {
+					has_government = communism
+					factor = 100
+				}
+			}
+
+			modifier = {	
+				political_power_factor = -0.3
+				stability_weekly_factor = -0.3
+				drift_defence_factor = 0.8
+				surrender_limit = 0.3
+			}
+
+			cancel_if_invalid = no
+		}
+		censored_press = {
+			name = "Censored Press"
+
+			picture = censored_press
+
+			cost = 150
+			removal_cost = -1
+			level = 3
+
+			available = {
+				NOT = { has_government = democratic }
+			}
+
+			modifier = {	
+				political_power_factor = -0.15
+				stability_weekly_factor = -0.15
+				drift_defence_factor = 0.4
+				surrender_limit = 0.1
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					has_government = fascism
+					factor = 50
+				}
+				modifier = {
+					has_government = neutrality
+					factor = 100
+				}
+				modifier = {
+					has_government = democratic
+					has_war = yes
+					factor = 50
+				}
+			}
+
+			cancel_if_invalid = no
+		}
+		controled_press = {
+			name = "Controled Press"
+
+			picture = controled_press
+
+			cost = 150
+			removal_cost = -1
+			level = 2
+
+			available = {
+				
+			}
+
+			modifier = {	
+				political_power_factor = 0.05
+				stability_weekly_factor = 0.05
+				drift_defence_factor = 0.1
+				surrender_limit = 0.025
+				if = {
+					limit = {
+						tag = USA
+						has_government = democratic
+					}
+					communism_drift = -0.05
+				}
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					has_government = democratic
+					factor = 10
+				}
+				modifier = {
+					tag = USA
+					has_government = democratic
+					communism > 0.1
+					factor = 100
+				}
+			}
+
+			cancel_if_invalid = no
+			default = yes
+		}
+		free_press = {
+			name = "Free Press"
+
+			picture = free_press
+
+			cost = 150
+			removal_cost = -1
+			level = 1
+
+			available = {
+				
+			}
+
+			modifier = {	
+				political_power_factor = 0.15
+				stability_weekly_factor = 0.15
+				drift_defence_factor = -0.15
+				surrender_limit = -0.1
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					has_government = democratic
+					factor = 20
+				}
+			}
+
+			cancel_if_invalid = no
+		}
+	}
+}

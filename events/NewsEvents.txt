@@ -1,0 +1,23 @@
+﻿###########################
+# News Events
+###########################
+
+add_namespace = news
+
+news_event = {
+	id = news.1
+	title = "The United States invades Chinese ports"
+	desc = "Faced with the tension of the imminent war between the Soviets and the Chinese Communists, the United States has acted quickly to guarantee the operability of the ports during the war"
+	picture = GFX_news_event_election_vote
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = "The world trembles right now"
+		trigger = { 
+			
+		}
+	}
+}

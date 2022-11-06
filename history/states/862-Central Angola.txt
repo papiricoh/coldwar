@@ -1,0 +1,28 @@
+state={
+	id=862
+	name="Central Angola"
+	resources={
+		rubber=1.000
+	}
+
+	history={
+		owner = POR
+		buildings = {
+			infrastructure = 2
+
+		}
+		victory_points = {
+			10966 1 
+		}
+		add_core_of = ANG
+
+	}
+
+	provinces={
+		5158 10966 12958 13236 13237 13238 13239 13240 13241 
+	}
+	manpower=1200000
+	buildings_max_level_factor=1.000
+	state_category=rural
+	local_supplies=0.000
+}

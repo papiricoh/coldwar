@@ -1,0 +1,24 @@
+state={
+	id=844
+	name="East Cambodia"
+	history={
+		add_core_of = CAM
+		owner = FRA
+		buildings = {
+			infrastructure = 1
+			
+		}
+		1949.1.1 = {
+			owner = CAM
+			controller = FRA
+		}
+
+	}
+	manpower=185234
+	state_category=town
+	provinces={
+		1620 4330 4596 7645 10204 12167 12260 12288 
+	}
+	buildings_max_level_factor=1.000
+	local_supplies=0.000
+}

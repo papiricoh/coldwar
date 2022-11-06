@@ -1,0 +1,3560 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+### search_filters = {FOCUS_FILTER_PROPAGANDA}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+# Reminder that focus filters prio has to be handled in the generic focus file :)
+
+focus_tree = {
+	id = soviet_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SOV
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 55 y = 1500 }
+
+	focus = {
+		id = SOV_the_fatherland
+		icon = GFX_goal_generic_war_with_comintern
+		text = "Opose Stalin"
+		x = 28
+		y = 0
+		#prerequisite = { focus = FRA_exit_nato_doctrine }
+		mutually_exclusive = { focus = SOV_the_motherland }
+		#relative_position_id = FRA_exit_nato_doctrine
+		cost = 10
+
+		ai_will_do = {
+			factor = -10
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 1000
+		}
+	}
+	focus = {
+		id = SOV_path_to_democracy
+		icon = GFX_goal_support_democracy
+		text = "The Western Way"
+		x = 6
+		y = 1
+		prerequisite = { focus = SOV_the_fatherland }
+		mutually_exclusive = { focus = SOV_path_to_monarchism }
+		relative_position_id = SOV_the_fatherland
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			##
+		}
+	}
+	focus = {
+		id = SOV_path_to_monarchism
+		icon = GFX_focus_generic_monarchy_1
+		text = "The Old Empire"
+		x = -6
+		y = 1
+		prerequisite = { focus = SOV_the_fatherland }
+		mutually_exclusive = { focus = SOV_path_to_democracy }
+		relative_position_id = SOV_the_fatherland
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+		}
+	}
+	focus = {
+		id = SOV_find_a_heir
+		icon = GFX_focus_generic_royal_wedding
+		text = "Find a Heir"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_path_to_monarchism }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_path_to_monarchism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			country_event = { id = soviet.1 }
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = SOV_rally_the_loyalists
+		icon = GFX_goal_generic_military_deal
+		text = "Rally the Loyalists"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_path_to_monarchism }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_path_to_monarchism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_timed_idea = { idea = SOV_neutrality_drift days = 620 }
+		}
+	}
+	focus = {
+		id = SOV_monarchy_strike_at_the_core
+		icon = GFX_goal_SOV_union_dissolution
+		text = "Time to Strike"
+		x = -1
+		y = 2
+		prerequisite = { focus = SOV_rally_the_loyalists } 
+		prerequisite = { focus = SOV_find_a_heir }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_rally_the_loyalists
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_government = communism
+			neutrality > 0.25
+		}
+		
+		bypass = {
+			has_government = neutrality
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_province_name = {
+				id = 3151
+				name = "Saint Petersburg"
+			}
+			set_capital = {state = 195}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.3
+			}
+			start_civil_war = {
+				ruling_party = neutrality
+				ideology = communism
+				size = 0.35
+				only_own_territory = yes
+				capital = 219
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 300
+			}
+		}
+	}
+	focus = {
+		id = SOV_monarchy_big_defense
+		icon = GFX_goal_generic_war_with_ussr
+		text = "The big Defense"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_monarchy_strike_at_the_core }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_monarchy_strike_at_the_core
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_civil_war = yes
+		}
+		
+		bypass = {
+			has_civil_war = no
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_timed_idea = { idea = SOV_civil_war_effort days = 1024 }
+		}
+	}
+	focus = {
+		id = SOV_a_russian_empire
+		icon = GFX_focus_SOV_russian_empire
+		text = "A Reborn Russia"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_monarchy_big_defense }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_monarchy_big_defense
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_civil_war = no
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_cosmetic_tag = SOV_russia
+		}
+	}
+	focus = {
+		id = SOV_gulags_for_communists
+		icon = GFX_focus_SOV_gulags
+		text = "Gulags for the communists"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_a_russian_empire }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_a_russian_empire
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.15
+			}
+		}
+	}
+	focus = {
+		id = SOV_neutrality_the_comunist_threat
+		icon = GFX_goal_SOV_communism_influence
+		text = "European Communist Threat"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_a_russian_empire }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_a_russian_empire
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			POL = {
+				NOT = {
+					has_government = neutrality
+				}
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = POL
+			}
+		}
+	}
+	focus = {
+		id = SOV_reclaim_polish_states
+		icon = GFX_focus_generic_modern_poland
+		text = "Reclaim the old Polish States"
+		x = -1
+		y = 2
+		prerequisite = { focus = SOV_neutrality_the_comunist_threat }
+		prerequisite = { focus = SOV_gulags_for_communists }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_neutrality_the_comunist_threat
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_state_core = 97
+			add_state_core = 92
+			add_state_core = 88
+			add_state_core = 90
+			add_state_core = 10
+			add_state_core = 87
+			add_state_core = 98
+		}
+	}
+	focus = {
+		id = SOV_german_puppet
+		icon = GFX_focus_ger_oppose_hitler
+		text = "The German Empire"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_reclaim_polish_states }
+		#mutually_exclusive = { focus = SOV_path_to_fascism }
+		relative_position_id = SOV_reclaim_polish_states
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				country_exists = GER
+			}
+			controls_state = 5
+			controls_state = 807
+			controls_state = 86
+			controls_state = 85
+			controls_state = 63
+			controls_state = 68
+			controls_state = 66
+			controls_state = 67
+			controls_state = 762
+			controls_state = 65
+			controls_state = 60
+			controls_state = 64
+			controls_state = 61
+			controls_state = 62
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			reset_province_name = 6332
+			GER = {
+				transfer_state = 5
+				transfer_state = 763
+				transfer_state = 188
+				transfer_state = 807
+				transfer_state = 86
+				transfer_state = 85
+				transfer_state = 63
+				transfer_state = 68
+				transfer_state = 66
+				transfer_state = 67
+				transfer_state = 762
+				transfer_state = 65
+				transfer_state = 60
+				transfer_state = 64
+				transfer_state = 61
+				transfer_state = 62
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.65
+				}
+				set_capital = {state = 763}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+			}
+			puppet = GER
+		}
+	}
+
+	focus = {
+		id = SOV_the_motherland
+		icon = GFX_goal_support_communism
+		text = "State of the Motherland"
+		x = 12
+		y = 0
+		#prerequisite = { focus = FRA_exit_nato_doctrine }
+		mutually_exclusive = { focus = SOV_the_fatherland }
+		#relative_position_id = FRA_exit_nato_doctrine
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 1000
+		}
+	}
+	focus = {
+		id = SOV_stalins_cult_of_personality
+		icon = GFX_focus_SOV_stalins_cult_of_personality
+		text = "Stalins Cult of Personality"
+		x = -6
+		y = 1
+		prerequisite = { focus = SOV_the_motherland }
+		#mutually_exclusive = { focus = FRA_french_nato_doctrine }
+		relative_position_id = SOV_the_motherland
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_country_leader = {
+				name = "Iosif Stalin"
+				ruling_only = yes
+			}
+			
+		}
+		
+		bypass = {
+			NOT = {
+				has_country_leader = {
+					name = "Iosif Stalin"
+					ruling_only = yes
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = {
+				closed_economy
+			}
+		}
+	}
+	focus = {
+		id = SOV_stability_problems
+		icon = GFX_goal_generic_dangerous_deal
+		text = "Solve the Stability Problems"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		mutually_exclusive = { focus = SOV_war_support_problems }
+		relative_position_id = SOV_stalins_cult_of_personality
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+	focus = {
+		id = SOV_war_support_problems
+		icon = GFX_goal_generic_military_deal
+		text = "Solve the War Support Problems"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_stalins_cult_of_personality
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.3
+		}
+	}
+	focus = {
+		id = SOV_world_communism
+		icon = GFX_goal_generic_world_communism
+		text = "World Communism"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_war_support_problems focus = SOV_stability_problems }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_war_support_problems
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_government = communism
+
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_nuclear_effort
+		icon = GFX_goal_generic_secret_weapon
+		text = "Nuclear Effort"
+		x = 3
+		y = -1
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_world_communism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			set_technology = {
+				atomic_research = 1
+				nuclear_reactor = 1
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_first_nuke
+		icon = GFX_focus_generic_cryptologic_bomb
+		text = "Prepare the Nuclear Tests"
+		x = 3
+		y = 1
+		prerequisite = { focus = SOV_world_communism }
+		prerequisite = { focus = SOV_the_nuclear_effort }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_world_communism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_tech = nuclear_reactor
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			set_technology = {
+				nukes = 1
+			}
+			219 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_test_the_first_nuke
+		icon = GFX_goal_tfv_generic_tech_sharing
+		text = "The First Nuclear Test"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_the_first_nuke }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_the_first_nuke
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_tech = nukes
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_nuclear_bombs = 1				
+			launch_nuke = {
+				province = 7350
+				state = 588
+				controller = SOV
+				use_nuke = yes
+			}
+			add_ideas = {
+				INTERNATIONAL_nuclear_club
+			}
+		}
+	}
+	focus = {
+		id = SOV_form_the_kgb
+		icon = GFX_focus_SOV_military_purge
+		text = "Form the KGB"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_world_communism }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_world_communism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_ideas = {
+				SOV_kgb
+			}
+		}
+	}
+	focus = {
+		id = SOV_development_in_the_baltic
+		icon = GFX_goal_SOV_baltic_states
+		text = "Development in the Baltic"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_form_the_kgb }
+		prerequisite = { focus = SOV_stability_problems }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_form_the_kgb
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 37
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_arms_development
+		icon = GFX_goal_generic_small_arms
+		text = "Weapons Development"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_form_the_kgb }
+		prerequisite = { focus = SOV_war_support_problems }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_form_the_kgb
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 133
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_polish_cores
+		icon = GFX_goal_generic_war_with_comintern
+		text = "Old Polish States Talks"
+		x = -2
+		y = 2
+		prerequisite = { focus = SOV_arms_development focus = SOV_development_in_the_baltic }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_arms_development
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = POL
+				}
+				remove_core_of = POL
+			}
+		}
+	}
+	focus = {
+		id = SOV_berlin_wall
+		icon = GFX_goal_fortify_the_westwall
+		text = "Build the Berlin Wall"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_arms_development focus = SOV_development_in_the_baltic }
+		prerequisite = { focus = SOV_test_the_first_nuke }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_arms_development
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			USA = {
+				country_event = {
+					id = coldcrisis.13
+				}
+			}
+			WGR = {
+				add_ideas = {
+					WGR_berlin_wall
+				}
+			}
+			DDR = {
+				add_ideas = {
+					DDR_berlin_wall
+				}
+			}
+			add_named_threat = { 
+				threat = 5 
+				name = "Berlin Wall Construction"
+			}
+		}
+	}
+	focus = {
+		id = SOV_checkpoint_charlie
+		icon = GFX_goal_generic_army_tanks
+		text = "Problems in Checkpoint Charlie"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_berlin_wall }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_berlin_wall
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_country_flag = "Checkpoint Charlie Crisis"
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_political_power = 1000
+		}
+	}
+	focus = {
+		id = SOV_union_structure
+		icon = GFX_goal_SOV_union
+		text = "Revise the Union Organization"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_the_motherland }
+		#mutually_exclusive = { focus = SOV_stability_problems }
+		relative_position_id = SOV_the_motherland
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_timed_idea = {idea = SOV_reorganized_union days = 400 }
+		}
+	}
+	focus = {
+		id = SOV_ukranian_exports
+		icon = GFX_goal_SOV_ukranie
+		text = "Focus on Ukranian Industry"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_union_structure }
+		mutually_exclusive = { focus = SOV_belarus_exports }
+		relative_position_id = SOV_union_structure
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = UKR
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_belarus_exports
+		icon = GFX_goal_SOV_belarus
+		text = "Focus on Belarusian Armament"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_union_structure }
+		mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_union_structure
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = BLR
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_caucasus_oil
+		icon = GFX_goal_SOV_caucasus_republic
+		text = "Oil in the Caucasus"
+		x = -1
+		y = 3
+		prerequisite = { focus = SOV_belarus_exports focus = SOV_ukranian_exports }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_belarus_exports
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = DAG
+				}
+				add_resource = {
+					type = oil
+					amount = 50
+					state = THIS
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_economic_prosperity_programs
+		icon = GFX_goal_generic_improve_economy
+		text = "Economic Prosperity Programs"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_test_the_first_nuke } 
+		prerequisite = { focus = SOV_caucasus_oil }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_test_the_first_nuke
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_economic_prosperity_program
+				days = 365
+			}
+		}
+	}
+	focus = {
+		id = SOV_destalinization
+		icon = GFX_focus_SOV_the_supreme_soviet
+		text = "Destalinization"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_caucasus_oil } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_caucasus_oil
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				has_country_leader = {
+					name = "Iosif Stalin"
+					ruling_only = yes
+				}
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = {
+				SOV_destalinization
+			}
+		}
+	}
+	focus = {
+		id = SOV_stalingrad
+		icon = GFX_goal_generic_more_territorial_claims
+		text = "Stalin's City Names"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_destalinization } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_destalinization
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			217 = {
+				set_state_name = "Volgograd"
+			}
+			set_province_name = {
+				id = 3529
+				name = "Volgograd"
+			}
+		}
+	}
+	focus = {
+		id = SOV_nuclear_focus
+		icon = GFX_focus_generic_cryptologic_bomb
+		text = "Nuclear Bombs Production"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_destalinization } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_destalinization
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = { idea = SOV_atomic_bomb_production days = 726 }
+		}
+	}
+	focus = {
+		id = SOV_cuban_rebolution
+		icon = GFX_focus_generic_join_comintern
+		text = "Support the Cuban Revolution"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_nuclear_focus } 
+		prerequisite = { focus = SOV_economic_prosperity_programs } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_nuclear_focus
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = CUB
+			NOT = {
+				CUB = {
+					has_government = communism
+				}
+			}
+			date > 1956.1.1
+		}
+		
+		bypass = {
+			OR = {
+				CUB = {
+					has_government = communism
+				}
+				NOT = {
+					country_exists = CUB
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CUB = {
+				add_timed_idea = { idea = CZE_communist days = 1024 }
+			}
+		}
+	}
+	focus = {
+		id = SOV_scientific_prosperity
+		icon = GFX_focus_generic_socialist_science
+		text = "Scientific Prosperity"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_test_the_first_nuke } 
+		prerequisite = { focus = SOV_economic_prosperity_programs } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_economic_prosperity_programs
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = SOV_the_comecon
+		icon = GFX_focus_SOV_the_comecon
+		text = "Form the Comecon"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_development_in_the_baltic focus = SOV_arms_development } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_development_in_the_baltic
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_country_leader = {
+				name = "Iosif Stalin"
+				ruling_only = yes
+			}
+		}
+		
+		bypass = {
+			NOT = {
+				has_country_leader = {
+					name = "Iosif Stalin"
+					ruling_only = yes
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = {
+				EAST_comecon
+			}
+			every_country = {
+				limit = {
+					is_puppet_of = SOV
+				}
+				add_ideas = {
+					EAST_comecon
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_warsaw_pact
+		icon = GFX_goal_EAST_Warsaw_pact
+		text = "Form the Warsaw Pact"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_stalingrad } 
+		prerequisite = { focus = SOV_nuclear_focus } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_destalinization
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_idea = EAST_comecon
+				}
+				remove_ideas = {
+					EAST_comecon
+				}
+			}
+			set_faction_name = "Warsaw Pact"
+		}
+	}
+	focus = {
+		id = SOV_warsaw_pact_doctrine
+		icon = GFX_goal_generic_world_communism
+		text = "Warsaw Pact Doctrine"
+		x = -2
+		y = 2
+		prerequisite = { focus = SOV_the_warsaw_pact } 
+		prerequisite = { focus = SOV_cuban_rebolution } 
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_the_warsaw_pact
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = {
+				EAST_warsaw_pact_doctrine
+			}
+			every_country = {
+				limit = {
+					is_puppet_of = SOV
+				}
+				add_ideas = {
+					EAST_warsaw_pact_doctrine
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_anti_capitalism
+		icon = GFX_goal_SOV_strike_at_the_west
+		text = "Anti-Capitalism Doctrines"
+		x = 6
+		y = 1
+		prerequisite = { focus = SOV_the_motherland }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_the_motherland
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			USA = {
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = WEST_anti_capitalism
+				}
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = USA
+				}
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = WEST_anti_capitalism
+				}
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = SOV
+				}
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = EAST_anti_capitalism
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_korea_problem
+		icon = GFX_goal_korean_war
+		text = "The Korean Problem"
+		x = -1
+		y = 2
+		prerequisite = { focus = SOV_anti_capitalism }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_anti_capitalism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = PRK
+			country_exists = KOR
+		}
+		
+		bypass = {
+			OR = {
+				date > 1953.1.1
+				AND = {
+					NOT = {
+						country_exists = PRK
+					}
+					country_exists = KOR
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			PRK = {
+				add_timed_idea = { idea = SOV_soviet_military_advisors days = 720 }
+			}
+		}
+	}
+	focus = {
+		id = SOV_vietnam_problem
+		icon = GFX_goal_vietnam_war
+		text = "The Vietnam Problem"
+		x = 1
+		y = 2
+		prerequisite = { focus = SOV_anti_capitalism }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_anti_capitalism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = VIN
+			country_exists = SVI
+		}
+		
+		bypass = {
+			date > 1964.1.1
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			VIN = {
+				add_timed_idea = { idea = SOV_soviet_military_advisors days = 720 }
+			}
+		}
+	}
+	focus = {
+		id = SOV_decolonization_presure
+		icon = GFX_goal_AFRICA_decolonization
+		text = "Decolonization Presure"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_anti_capitalism }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_anti_capitalism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = FRA
+			country_exists = BEL
+			country_exists = ENG
+		}
+		
+		bypass = {
+			OR = {
+				NOT = {
+					country_exists = FRA
+					country_exists = BEL
+					country_exists = ENG
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			FRA = {
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = ENG_anti_imperialist
+				}
+			}
+			ENG = {
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = ENG_anti_imperialist
+				}
+			}
+			BEL = {
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = ENG_anti_imperialist
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_united_nations_securty_council
+		icon = GFX_goal_generic_united_nations_securty_council
+		text = "Form the United Nations Securty Council"
+		x = 0
+		y = 3
+		prerequisite = { focus = SOV_decolonization_presure }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_decolonization_presure
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			has_idea = UN_security_council
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = UN_security_council
+			USA = {add_ideas = UN_security_council}
+			ENG = {add_ideas = UN_security_council}
+			CHI = {add_ideas = UN_security_council}
+			FRA = {add_ideas = UN_security_council}
+		}
+	}
+	focus = {
+		id = SOV_african_economic_aid
+		icon = GFX_focus_generic_africa_production
+		text = "Aid African Economies"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_united_nations_securty_council }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_united_nations_securty_council
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					any_owned_state = {
+						is_on_continent = africa
+						is_core_of = PREV
+						NOT = {
+							is_core_of = POR
+							is_core_of = SPA
+						}
+					}
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = long_term_trade_partner
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_african_influence
+		icon = GFX_focus_generic_africa_factory
+		text = "African Soviet Influence"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_united_nations_securty_council }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_united_nations_securty_council
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					any_owned_state = {
+						is_on_continent = africa
+						is_core_of = PREV
+						NOT = {
+							is_core_of = POR
+							is_core_of = SPA
+						}
+					}
+				}
+				add_ideas = SOV_african_communist
+			}
+		}
+	}
+	focus = {
+		id = SOV_african_communism
+		icon = GFX_focus_prc_agrarian_socialism
+		text = "African Communism"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_african_influence }
+		prerequisite = { focus = SOV_african_economic_aid }
+		prerequisite = { focus = SOV_destalinization }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_african_influence
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					any_owned_state = {
+						is_on_continent = africa
+						is_core_of = PREV
+						NOT = {
+							is_core_of = POR
+							is_core_of = SPA
+						}
+					}
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_space_race
+		icon = GFX_focus_generic_space_race
+		text = "The Space Race"
+		x = 3
+		y = 2
+		prerequisite = { focus = SOV_stalingrad }
+		prerequisite = { focus = SOV_nuclear_focus }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_destalinization
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+		}
+	}
+	focus = {
+		id = SOV_laika
+		icon = GFX_focus_rocketry
+		text = "Send Laika"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_the_space_race }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_the_space_race
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+		}
+	}
+	focus = {
+		id = SOV_sputnik
+		icon = GFX_focus_SOV_sputnik
+		text = "The Sputnik"
+		x = -2
+		y = 1
+		prerequisite = { focus = SOV_the_space_race }
+		prerequisite = { focus = SOV_the_warsaw_pact }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_the_space_race
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+		}
+	}
+	focus = {
+		id = SOV_space_man
+		icon = GFX_focus_rocketry
+		text = "The First Man in Space"
+		x = -4
+		y = 0
+		prerequisite = { focus = SOV_the_space_race }
+		prerequisite = { focus = SOV_nuclear_focus }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_laika
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+		}
+	}
+	focus = {
+		id = SOV_moon_landing
+		icon = GFX_focus_SOV_moon_landing
+		text = "The Man On the Moon"
+		x = -2
+		y = 1
+		prerequisite = { focus = SOV_laika }
+		prerequisite = { focus = SOV_space_man }
+		prerequisite = { focus = SOV_sputnik }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_laika
+		cost = 100
+
+		ai_will_do = {
+			factor = -1
+		}
+
+		available = {
+			date > 1969.1.1
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+		}
+	}
+	focus = {
+		id = SOV_with_yugoslavia
+		icon = GFX_focus_befriend_communist_yugoslavia
+		text = "Befriend Communist Yugoslavia"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_african_communism }
+		mutually_exclusive = { focus = SOV_without_yugoslavia }
+		relative_position_id = SOV_african_communism
+		cost = 10
+
+		ai_will_do = {
+			factor = 12
+		}
+
+		available = {
+			YUG = {
+				has_government = communism
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			YUG = {
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = EAST_anti_capitalism
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_without_yugoslavia
+		icon = GFX_focus_attack_communist_yugoslavia
+		text = "Attack Communist Yugoslavia"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_african_communism }
+		mutually_exclusive = { focus = SOV_with_yugoslavia }
+		relative_position_id = SOV_african_communism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			YUG = {
+				has_government = communism
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUG
+			}
+		}
+	}
+	focus = {
+		id = SOV_albania_independence
+		icon = GFX_focus_SOV_albania
+		text = "Albanian Talks"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_with_yugoslavia }
+		#mutually_exclusive = { focus = SOV_without_yugoslavia }
+		relative_position_id = SOV_with_yugoslavia
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			ALB = {
+				has_government = communism
+			}
+			country_exists = PRC
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_timed_idea = { idea = SOV_albanian_independence days = 364 }
+			end_puppet = ALB
+			ALB = {
+				leave_faction = yes
+			}
+			PRC = {
+				add_to_faction = ALB
+			}
+		}
+	}
+
+
+	focus = {
+		id = SOV_cuban_missiles
+		icon = GFX_focus_SOV_cuba
+		text = "Misiles In Cuba"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_space_man }
+		prerequisite = { focus = SOV_warsaw_pact_doctrine }
+		prerequisite = { focus = SOV_albania_independence }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_space_man
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			CUB = {
+				has_government = communism
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_country_flag = "Ongoing Cuban Missile Crisis"
+			add_named_threat = { 
+				threat = 35
+				name = "Cuban Misile Crisis"
+			}
+			add_ideas = SOV_cuban_missile_crisis
+			add_opinion_modifier  = {
+				target = USA
+				modifier = cuban_missile_crisis
+			}
+			USA = {
+				set_country_flag = "Ongoing Cuban Missile Crisis"
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = cuban_missile_crisis
+				}
+				country_event = { id = coldcrisis.15 }
+			}
+			#TODO DECISIONS CATEGORY SOVIET AND US CUBAN MISILE CRISIS
+		}
+	}
+	focus = {
+		id = SOV_prepare_for_war
+		icon = GFX_goal_generic_major_war
+		text = "Prepare for war"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_cuban_missiles }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_cuban_missiles
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_country_flag = "Ongoing Cuban Missile Crisis"
+		}
+		
+		bypass = {
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = SOV_turkey_misiles
+		icon = GFX_focus_SOV_turkey
+		text = "Ask the US to Retire Missiles in Turkey"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_cuban_missiles }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_cuban_missiles
+		cost = 2
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_country_flag = "Ongoing Cuban Missile Crisis"
+		}
+		
+		bypass = {
+			OR = {
+				NOT = {
+					has_country_flag = "Ongoing Cuban Missile Crisis"
+				}
+				has_war_with = USA
+			}
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			clr_country_flag = "Ongoing Cuban Missile Crisis"
+			USA = {clr_country_flag = "Ongoing Cuban Missile Crisis" }
+			remove_ideas = SOV_cuban_missile_crisis
+			add_war_support = -0.05
+			add_named_threat = { 
+				threat = -30
+				name = "End of the Cuban Misile Crisis"
+			}
+			USA = { country_event = { id = coldcrisis.17 }}
+		}
+	}
+
+	focus = {
+		id = SOV_inner_talks
+		icon = GFX_focus_generic_control_the_unions
+		text = "Soviet Inner Talks"
+		x = 6
+		y = 1
+		prerequisite = { focus = SOV_turkey_misiles }
+		prerequisite = { focus = SOV_albania_independence }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_turkey_misiles
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_rule = {
+				can_guarantee_other_ideologies = yes
+			}
+		}
+	}
+	focus = {
+		id = SOV_african_interventionism
+		icon = GFX_goal_SOV_great_republic
+		text = "Intervention In Africa"
+		x = -5
+		y = 1
+		prerequisite = { focus = SOV_inner_talks }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_inner_talks
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = SOV_nigerian_civil_war
+		icon = GFX_goal_generic_major_war
+		text = "Nigerian Civil War Support"
+		x = -2
+		y = 1
+		prerequisite = { focus = SOV_african_interventionism }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_african_interventionism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = NGA
+			NGA = {
+				has_civil_war = yes
+			}
+			has_equipment = {
+				infantry_equipment_3 > 11999
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			send_equipment = {
+				equipment = infantry_equipment_3
+				amount = 10000
+				target = NGA
+			}
+		}
+	}
+	focus = {
+		id = SOV_angolan_civil_war
+		icon = GFX_goal_generic_territory_or_war
+		text = "Angolan Civil War Support"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_african_interventionism }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_african_interventionism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = ANG
+			ANG = {
+				has_civil_war = yes
+			}
+			has_equipment = {
+				infantry_equipment_3 > 11999
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			send_equipment = {
+				equipment = infantry_equipment_3
+				amount = 10000
+				target = ANG
+			}
+		}
+	}
+	focus = {
+		id = SOV_somali_ethiopian_war
+		icon = GFX_goal_generic_territory_or_war
+		text = "Somali-Ethiopian War Support"
+		x = 2
+		y = 1
+		prerequisite = { focus = SOV_african_interventionism }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_african_interventionism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = ETH
+			country_exists = SOM
+			ETH = {
+				has_war_with = SOM
+			}
+			has_equipment = {
+				infantry_equipment_3 > 11999
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			send_equipment = {
+				equipment = infantry_equipment_3
+				amount = 10000
+				target = ETH
+			}
+		}
+	}
+	focus = {
+		id = SOV_restructuring_the_union
+		icon = GFX_goal_SOV_union
+		text = "Restructuring the Union"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_inner_talks }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_inner_talks
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 1000
+		}
+	}
+	focus = {
+		id = SOV_move_capital_to_leningrad
+		icon = GFX_focus_generic_treaty
+		text = "Move the Capital to Leningrad"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_restructuring_the_union }
+		mutually_exclusive = { focus = SOV_not_move_capital }
+		relative_position_id = SOV_restructuring_the_union
+		cost = 10
+
+		ai_will_do = {
+			factor = -1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_capital = {state = 195}
+		}
+	}
+	focus = {
+		id = SOV_not_move_capital
+		icon = GFX_focus_generic_join_comintern
+		text = "Moscow World Communist City"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_restructuring_the_union }
+		mutually_exclusive = { focus = SOV_move_capital_to_leningrad }
+		relative_position_id = SOV_restructuring_the_union
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 600
+		}
+	}
+	focus = {
+		id = SOV_first_union_border_talks
+		icon = GFX_focus_generic_soviet_politics
+		text = "First Union Border Talks"
+		x = -1
+		y = 2
+		prerequisite = { focus = SOV_not_move_capital focus = SOV_move_capital_to_leningrad }
+		#mutually_exclusive = { focus = SOV_move_capital_to_leningrad }
+		relative_position_id = SOV_not_move_capital
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			country_event = { id = soviet.2 }
+		}
+	}
+	focus = {
+		id = SOV_freedom_reforms
+		icon = GFX_focus_generic_the_giant_wakes
+		text = "Freedom Reforms"
+		x = 11
+		y = 1
+		prerequisite = { focus = SOV_inner_talks }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_inner_talks
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				has_country_leader = {
+					name = "Nikita Jrushchov"
+					ruling_only = yes
+				}
+			}
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = SOV_industrial_focus
+		icon = GFX_goal_reichsautobahn
+		text = "Industrial Focus"
+		x = 46
+		y = 0
+		#prerequisite = { focus = SOV_inner_talks }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		#relative_position_id = SOV_inner_talks
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 132
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_civilian_industry_1
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Civilian Indutry Development I"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_industrial_focus }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_industrial_focus
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_civilian_industry_2
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Civilian Indutry Development II"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_civilian_industry_1 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_civilian_industry_1
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_civilian_industry_3
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Civilian Indutry Development III"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_civilian_industry_2 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_civilian_industry_2
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_civilian_industry_4
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Civilian Indutry Development IV"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_civilian_industry_3 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_civilian_industry_3
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_civilian_industry_5
+		icon = GFX_goal_generic_construct_civ_factory
+		text = "Civilian Indutry Development V"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_civilian_industry_4 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_civilian_industry_4
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_military_industry_1
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Military Indutry Development I"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_industrial_focus }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_industrial_focus
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_military_industry_2
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Military Indutry Development II"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_military_industry_1 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_military_industry_1
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_military_industry_3
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Military Indutry Development III"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_military_industry_2 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_military_industry_2
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_military_industry_4
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Military Indutry Development IV"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_military_industry_3 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_military_industry_3
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_military_industry_5
+		icon = GFX_goal_generic_construct_mil_factory
+		text = "Military Indutry Development V"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_military_industry_4 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_military_industry_4
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_develop_the_great_steppe
+		icon = GFX_goal_generic_production2
+		text = "Develop the Great Steppe"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_military_industry_5 }
+		prerequisite = { focus = SOV_civilian_industry_5 }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_military_industry_5
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 136
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_indutry_in_the_urals
+		icon = GFX_goal_generic_construction2
+		text = "Industry in the Urals"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_develop_the_great_steppe }
+		mutually_exclusive = { focus = SOV_indutry_in_the_caucasus }
+		relative_position_id = SOV_develop_the_great_steppe
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 138
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_indutry_in_the_caucasus
+		icon = GFX_goal_generic_consumer_goods
+		text = "Industry in the Caucasus"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_develop_the_great_steppe }
+		mutually_exclusive = { focus = SOV_indutry_in_the_urals }
+		relative_position_id = SOV_develop_the_great_steppe
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					region = 134
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_repair_the_union
+		icon = GFX_goal_generic_soviet_construction
+		text = "Repair the Union"
+		x = -4
+		y = 1
+		prerequisite = { focus = SOV_industrial_focus }
+		#mutually_exclusive = { focus = SOV_indutry_in_the_urals }
+		relative_position_id = SOV_industrial_focus
+		cost = 20
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_idea = Comunist_destoyed_europe
+		}
+		
+		bypass = {
+			NOT = { has_idea = Comunist_destoyed_europe }
+			NOT = { has_idea = Comunist_destoyed_europe_2 }
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Comunist_destoyed_europe
+				add_idea = Comunist_destoyed_europe_2
+			}
+		}
+	}
+	focus = {
+		id = SOV_eastern_aid
+		icon = GFX_goal_generic_positive_trade_relations
+		text = "Aid for the East Bloc"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_repair_the_union }
+		mutually_exclusive = { focus = SOV_repair_the_union_2 }
+		relative_position_id = SOV_repair_the_union
+		cost = 20
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_idea = Comunist_destoyed_europe
+					is_puppet_of = SOV
+				}
+				swap_ideas = {
+					remove_idea = Comunist_destoyed_europe
+					add_idea = Comunist_destoyed_europe_2
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_repair_the_union_2
+		icon = GFX_focus_generic_soviet_deal
+		text = "Focus on the Motherland"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_repair_the_union }
+		mutually_exclusive = { focus = SOV_eastern_aid }
+		relative_position_id = SOV_repair_the_union
+		cost = 20
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+			NOT = { has_idea = Comunist_destoyed_europe_2 }
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			
+			swap_ideas = {
+				remove_idea = Comunist_destoyed_europe_2
+				add_idea = Comunist_destoyed_europe_3
+			}
+		}
+	}
+	focus = {
+		id = SOV_repair_the_union_3
+		icon = GFX_focus_generic_glorious_communism
+		text = "End of the Recession"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_repair_the_union_2 }
+		#mutually_exclusive = { focus = SOV_eastern_aid }
+		relative_position_id = SOV_repair_the_union_2
+		cost = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+			NOT = { has_idea = Comunist_destoyed_europe_3 }
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			remove_ideas = Comunist_destoyed_europe_3
+		}
+	}
+
+	focus = {
+		id = SOV_international_focus
+		icon = GFX_focus_generic_diplomatic_treaty
+		text = "International Diplomacy"
+		x = 60
+		y = 0
+		#prerequisite = { focus = SOV_repair_the_union_2 }
+		#mutually_exclusive = { focus = SOV_eastern_aid }
+		#relative_position_id = SOV_repair_the_union_2
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 250
+		}
+	}
+	focus = {
+		id = SOV_east_asian_diplomacy
+		icon = GFX_focus_usa_focus_on_asia
+		text = "East Asia Diplomacy"
+		x = -4
+		y = 1
+		prerequisite = { focus = SOV_international_focus }
+		#mutually_exclusive = { focus = SOV_eastern_aid }
+		relative_position_id = SOV_international_focus
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 250
+		}
+	}
+	focus = {
+		id = SOV_talks_with_the_PRC
+		icon = GFX_focus_chi_one_china_policy
+		text = "Talks With Communist China"
+		x = -1
+		y = 1
+		prerequisite = { focus = SOV_east_asian_diplomacy }
+		mutually_exclusive = { focus = SOV_talks_with_the_CHI }
+		relative_position_id = SOV_east_asian_diplomacy
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			PRC = {
+				exists = yes
+				NOT = {has_war_with = CHI}
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			PRC = { country_event = { id = soviet.4 } }
+		}
+	}
+	focus = {
+		id = SOV_talks_with_the_CHI
+		icon = GFX_focus_generic_china1
+		text = "Talks With Nationalist China"
+		x = 1
+		y = 1
+		prerequisite = { focus = SOV_east_asian_diplomacy }
+		mutually_exclusive = { focus = SOV_talks_with_the_PRC }
+		relative_position_id = SOV_east_asian_diplomacy
+		cost = 10
+
+		ai_will_do = {
+			factor = -21
+		}
+
+		available = {
+			CHI = {
+				exists = yes
+				NOT = {has_war_with = PRC}
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_opinion_modifier  = {
+				target = CHI
+				modifier = anti_capitalist_diplomacy_focus
+			}
+			CHI = {
+					
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = anti_capitalist_diplomacy_focus
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_kuo_soviet_plan
+		icon = GFX_focus_prc_maoism
+		text = "Prepare the Kuo-Soviet Plan"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_talks_with_the_CHI }
+		#mutually_exclusive = { focus = SOV_talks_with_the_PRC }
+		relative_position_id = SOV_talks_with_the_CHI
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			CHI = {
+				exists = yes
+				NOT = {has_war_with = PRC}
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			PRC = {
+				add_opinion_modifier  = {
+					target = SOV
+					modifier = war_plan_red
+				}
+			}
+			every_state = {
+				limit = {
+					region = 155 
+				}
+				add_core_of = SOV
+			}
+			USA = {
+				country_event = { id = soviet.5 }
+			}
+		}
+	}
+	focus = {
+		id = SOV_war_with_the_PRC
+		icon = GFX_goal_generic_major_war
+		text = "War with the Peoples Republic of China"
+		x = 0
+		y = 1
+		prerequisite = { focus = SOV_kuo_soviet_plan }
+		#mutually_exclusive = { focus = SOV_talks_with_the_PRC }
+		relative_position_id = SOV_kuo_soviet_plan
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			CHI = {
+				exists = yes
+				NOT = {has_war_with = PRC}
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			SOV = {add_to_faction = CHI}
+			CHI = {declare_war_on = {
+				target = PRC
+				type = annex_everything
+			}}
+			declare_war_on = {
+				target = PRC
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+		id = SOV_taiwan_discussion
+		icon = GFX_goal_generic_position_armies
+		text = "The Taiwan Discussion"
+		x = 0
+		y = 2
+		prerequisite = { focus = SOV_talks_with_the_PRC }
+		#mutually_exclusive = { focus = SOV_talks_with_the_PRC }
+		relative_position_id = SOV_talks_with_the_PRC
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			PRC = {
+				exists = yes
+				NOT = {has_war_with = CHI}
+				is_in_faction_with = SOV
+			}
+
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			country_event = { id = soviet.6 }
+		}
+	}
+	focus = {
+		id = SOV_icbm_treaty
+		icon = GFX_goal_SOV_icbm_treaty
+		text = "First ICBM Treaty"
+		x = 5
+		y = 1
+		prerequisite = { focus = SOV_inner_talks }
+		#mutually_exclusive = { focus = SOV_ukranian_exports }
+		relative_position_id = SOV_inner_talks
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				has_country_leader = {
+					name = "Nikita Jrushchov"
+					ruling_only = yes
+				}
+			}
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			
+		}
+	}
+
+}

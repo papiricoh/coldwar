@@ -1,0 +1,30 @@
+ideas = {
+	country = {
+		SOV_neutrality_drift = {
+			name = "Widespread Monarchical Sentiment"
+			removal_cost = -1
+
+			picture = generic_monarchist_uprising
+		
+			modifier = {
+				neutrality_drift = 0.15
+
+				neutrality_acceptance = 30
+			}
+
+		}
+		SOV_civil_war_effort = {
+			name = "Russia Defense"
+			removal_cost = -1
+
+			picture = generic_wall_line
+		
+			modifier = {
+				army_core_defence_factor = 0.2
+				army_speed_factor = -0.1
+				army_morale_factor = 0.35
+			}
+
+		}
+	}
+}

@@ -1,0 +1,29 @@
+state={
+	id=846
+	name="North Tonkin"
+	history={
+		add_core_of = VIN
+		owner = FRA
+		victory_points = {
+			4075 30 
+		}
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 1
+			air_base = 1
+
+		}
+		1949.1.1 = {
+			owner = VIN
+			controller = FRA
+		}
+
+	}
+	provinces={
+		1073 1157 4119 7015 7093 7518 9948 12008 12048 12065 
+	}
+	manpower=450000
+	buildings_max_level_factor=1.000
+	state_category=town
+	local_supplies=0.000
+}

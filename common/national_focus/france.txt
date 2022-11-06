@@ -1,0 +1,1576 @@
+﻿focus_tree = {
+	id = french_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = FRA
+		}
+	}
+
+	initial_show_position = {
+		x = 0
+	}
+
+	
+	default = no
+	focus = {
+		id = FRA_victory_in_ww2
+		icon = GFX_focus_chi_reach_out_to_france
+		text = "Victory in WW2"
+		x = 20
+		y = 0
+		#prerequisite = { focus = FRA_devalue_the_franc }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		#relative_position_id = FRA_devalue_the_franc
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			date > 1949.1.1
+		}
+		
+		bypass = {
+
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.3
+		}
+	}
+	focus = {
+		id = FRA_colonial_focus
+		icon = GFX_goal_generic_more_territorial_claims
+		text = "Discuss the colonial policy"
+		x = 4
+		y = 1
+		prerequisite = { focus = FRA_victory_in_ww2 }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_victory_in_ww2
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			USA = {
+				add_opinion_modifier = {
+					target = FRA
+					modifier = anti_imperialist
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_asian_rebels
+		icon = GFX_goal_generic_dangerous_deal
+		text = "Evacuate the industry in French Indochina"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_colonial_focus }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_colonial_focus
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			has_war_with = VIN
+			has_war_with = CAM
+			has_war_with = LAO
+		}
+		
+		bypass = {
+			NOT = {
+				OR = {
+					AND = {
+						has_war_with = VIN
+						has_war_with = CAM
+						has_war_with = LAO
+					}
+					AND = {
+						country_exists = VIN
+						country_exists = CAM
+						country_exists = LAO
+					}
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 6 }
+			add_offsite_building = { type = industrial_complex level = 6 }
+			286 = {
+				damage_building = {
+					type = infrastructure
+					damage = 10
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_african_colonies
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		text = "Begin the Decolonization of Africa"
+		x = 0
+		y = 2
+		prerequisite = { focus = FRA_colonial_focus }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_colonial_focus
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_political_power = 400
+		}
+	}
+	focus = {
+		id = FRA_african_development_programs
+		icon = GFX_focus_generic_africa_factory
+		text = "African Development Programs"
+		x = -1
+		y = 1
+		prerequisite = { focus = FRA_african_colonies }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_african_colonies
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_african_diplomatic_aproach
+		icon = GFX_goal_anschluss
+		text = "African-French Culture Programs"
+		x = 1
+		y = 1
+		prerequisite = { focus = FRA_african_colonies }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_african_colonies
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_compliance = 5
+				add_resistance = 15
+			}
+		}
+	}
+	focus = {
+		id = FRA_african_more_development
+		icon = GFX_focus_generic_africa_production
+		text = "African Development Effort"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_african_diplomatic_aproach }
+		prerequisite = { focus = FRA_african_development_programs }
+		mutually_exclusive = { focus = FRA_argelia_the_french_jewel }
+		relative_position_id = FRA_african_diplomatic_aproach
+		cost = 30
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_argelia_the_french_jewel
+		icon = GFX_focus_generic_military_mission
+		text = "Algeria the French Jewel"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_african_diplomatic_aproach }
+		prerequisite = { focus = FRA_african_development_programs }
+		mutually_exclusive = { focus = FRA_african_more_development }
+		relative_position_id = FRA_african_diplomatic_aproach
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			459 = {
+				is_controlled_by = FRA
+			}
+			460 = {
+				is_controlled_by = FRA
+			}
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ALG
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_integrate_algelia
+		icon = GFX_goal_argelia_the_french_jewel
+		text = "Integrate Algeria to the French State"
+		x = 0
+		y = 2
+		prerequisite = { focus = FRA_argelia_the_french_jewel }
+		#mutually_exclusive = { focus = FRA_african_more_development }
+		relative_position_id = FRA_argelia_the_french_jewel
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			date > 1960.1.1
+			459 = {
+				compliance > 99
+				is_controlled_by = FRA
+			}
+			460 = {
+				compliance > 99
+				is_controlled_by = FRA
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ALG
+				}
+				add_core_of = FRA
+			}
+			USA = {
+				add_opinion_modifier = {
+					target = FRA
+					modifier = minor_sanctions_relations
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_secure_the_colonies
+		icon = GFX_focus_generic_license_production
+		text = "Secure Control in the Colonies"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_african_more_development }
+		#mutually_exclusive = { focus = FRA_african_more_development }
+		relative_position_id = FRA_african_more_development
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_compliance = 15
+				add_resistance = 10
+			}
+		}
+	}
+	focus = {
+		id = FRA_safe_referendums
+		icon = GFX_focus_generic_diplomatic_treaty
+		text = "Guarantee Free Referendums"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_secure_the_colonies }
+		mutually_exclusive = { focus = FRA_early_independence_programs }
+		relative_position_id = FRA_secure_the_colonies
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_political_power = 1000
+		}
+	}
+	focus = {
+		id = FRA_early_independence_programs
+		icon = GFX_focus_ger_break_anglo_french_colonial_hegemony
+		text = "Early Independence Programs"
+		x = -4
+		y = 1
+		prerequisite = { focus = FRA_secure_the_colonies }
+		mutually_exclusive = { focus = FRA_safe_referendums }
+		relative_position_id = FRA_secure_the_colonies
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_resistance = -4
+			}
+		}
+	}
+	focus = {
+		id = FRA_congo_region_independence
+		icon = GFX_focus_generic_treaty
+		text = "Congo Region Independence"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_early_independence_programs }
+		#mutually_exclusive = { focus = FRA_safe_referendums }
+		relative_position_id = FRA_early_independence_programs
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				NOT = {
+					country_exists = GAB
+				}
+				NOT = {
+					country_exists = RCG
+				}
+				NOT = {
+					country_exists = CMR
+				}
+				NOT = {
+					country_exists = CAR
+				}
+			}
+		}
+
+		bypass = {
+			country_exists = GAB
+			country_exists = RCG
+			country_exists = CMR
+			country_exists = CAR
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			release = GAB
+			release = RCG
+			release = CMR
+			release = CAR
+		}
+	}
+	focus = {
+		id = FRA_liberian_region_independence
+		icon = GFX_focus_generic_treaty
+		text = "Liberian Region Independence"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_early_independence_programs }
+		#mutually_exclusive = { focus = FRA_safe_referendums }
+		relative_position_id = FRA_early_independence_programs
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				NOT = {
+					country_exists = IVO
+				}
+				NOT = {
+					country_exists = GNA
+				}
+				NOT = {
+					country_exists = MLI
+				}
+				NOT = {
+					country_exists = NGR
+				}
+				NOT = {
+					country_exists = DAH
+				}
+				NOT = {
+					country_exists = MRT
+				}
+				NOT = {
+					country_exists = CHA
+				}
+			}
+		}
+
+		bypass = {
+			country_exists = IVO
+			country_exists = GNA
+			country_exists = MLI
+			country_exists = NGR
+			country_exists = DAH
+			country_exists = MRT
+			country_exists = CHA
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			release = IVO
+			release = GNA
+			release = MLI
+			release = NGR
+			release = DAH
+			release = MRT
+			release = CHA
+		}
+	}
+	focus = {
+		id = FRA_argelian_region_independence
+		icon = GFX_focus_generic_treaty
+		text = "Algerian Region Independence"
+		x = 2
+		y = 1
+		prerequisite = { focus = FRA_early_independence_programs }
+		#mutually_exclusive = { focus = FRA_safe_referendums }
+		relative_position_id = FRA_early_independence_programs
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				NOT = {
+					country_exists = TUN
+				}
+				NOT = {
+					country_exists = MOR
+				}
+			}
+		}
+
+		bypass = {
+			country_exists = TUN
+			country_exists = MOR
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			release = TUN
+			release = MOR
+		}
+	}
+	focus = {
+		id = FRA_indian_territories
+		icon = GFX_goal_generic_forceful_treaty
+		text = "Return the French India"
+		x = 4
+		y = 1
+		prerequisite = { focus = FRA_early_independence_programs focus = FRA_safe_referendums }
+		#mutually_exclusive = { focus = FRA_safe_referendums }
+		relative_position_id = FRA_early_independence_programs
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			320 = {
+				is_controlled_by = FRA
+			}
+		}
+
+		bypass = {
+			320 = {
+				is_controlled_by = RAJ
+			}
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			RAJ = {
+				transfer_state = 320
+			}
+		}
+	}
+	focus = {
+		id = FRA_soviet_threat
+		icon = GFX_focus_generic_little_entente
+		text = "The Soviet Threat"
+		x = -4
+		y = 1
+		prerequisite = { focus = FRA_victory_in_ww2 }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_victory_in_ww2
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war = no
+		}
+		
+		bypass = {
+
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_ideas = {
+				WEST_anticommunist
+			}
+		}
+	}
+	focus = {
+		id = FRA_anti_communism_vietnam
+		icon = GFX_goal_SVI_great_republic
+		text = "A anti-communist Vietnam"
+		x = 2
+		y = 1
+		prerequisite = { focus = FRA_soviet_threat }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_soviet_threat
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			country_exists = SVI
+		}
+		
+		bypass = {
+			NOT = {
+				country_exists = SVI
+			}
+			date > 1960.1.1
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_political_power = 400
+			SVI = {
+				add_ideas = {
+					WEST_anticommunist
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_own_conflicts
+		icon = GFX_focus_generic_concessions
+		text = "Fight the Communism in the Colonies"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_soviet_threat }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_soviet_threat
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_political_power = 400
+		}
+	}
+	focus = {
+		id = FRA_own_conflicts
+		icon = GFX_focus_generic_concessions
+		text = "Fight Communism in the Colonies"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_soviet_threat }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_soviet_threat
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_political_power = 400
+		}
+	}
+	focus = {
+		id = FRA_algeria_war_of_independence
+		icon = GFX_focus_generic_support_the_left_right
+		text = "Protests and Riots in Algeria"
+		x = 2
+		y = 1
+		prerequisite = { focus = FRA_own_conflicts }
+		#mutually_exclusive = { focus = FRA_devalue_the_franc }
+		relative_position_id = FRA_own_conflicts
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				country_exists = ALG
+			}
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			country_event = {
+				id = coldcrisis.11
+			}
+		}
+	}
+	focus = {
+		id = FRA_assert_control_algeria
+		icon = GFX_focus_generic_strike_at_democracy1
+		text = "Regain control of Algeria"
+		x = 1
+		y = 1
+		prerequisite = { focus = FRA_algeria_war_of_independence }
+		mutually_exclusive = { focus = FRA_peace_with_algeria }
+		relative_position_id = FRA_algeria_war_of_independence
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				country_exists = ALG
+			}
+			FRA = {
+				owns_state = 460
+				owns_state = 459
+				owns_state = 513
+				owns_state = 514
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ALG
+				}
+				add_resistance = -100
+			}
+		}
+	}
+	focus = {
+		id = FRA_peace_with_algeria
+		icon = GFX_goal_generic_dangerous_deal
+		text = "Peace talks with Algeria"
+		x = -1
+		y = 1
+		prerequisite = { focus = FRA_algeria_war_of_independence }
+		mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_algeria_war_of_independence
+		cost = 10
+
+		ai_will_do = {
+			factor = 6
+		}
+
+		available = {
+			country_exists = ALG
+			FRA = {
+				has_war_with = ALG
+			}
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			ALG = {
+				country_event = {
+					id = coldcrisis.12
+				}
+				add_ideas = {
+					WEST_anticommunist
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_colonial_manpower
+		icon = GFX_goal_generic_military_sphere
+		text = "Needs for Colonial Manpower"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_own_conflicts }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_own_conflicts
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+	}
+	focus = {
+		id = FRA_colonial_recluit_act
+		icon = GFX_goal_generic_forceful_treaty
+		text = "Colonial Recruit Edict"
+		x = -1
+		y = 1
+		prerequisite = { focus = FRA_colonial_manpower }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_colonial_manpower
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = {
+				WEST_colonial_conscription
+			}
+		}
+	}
+	focus = {
+		id = FRA_trade_act
+		icon = GFX_goal_generic_trade
+		text = "Colonial Trade Edict"
+		x = 1
+		y = 1
+		prerequisite = { focus = FRA_colonial_manpower }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_colonial_manpower
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = {
+				WEST_colonial_trade
+			}
+		}
+	}
+	focus = {
+		id = FRA_anti_communism_operations
+		icon = GFX_goal_anti_comintern_pact
+		text = "Anti-Communist Operations"
+		x = 0
+		y = 2
+		prerequisite = { focus = FRA_trade_act }
+		prerequisite = { focus = FRA_peace_with_algeria }
+		prerequisite = { focus = FRA_colonial_recluit_act }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_trade_act
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			random_list = {
+				2 = {
+					every_country = {
+						limit = {
+							has_government = communism
+						}
+						add_popularity = {
+							ideology = communism
+							popularity = -0.1
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.20
+						}
+					}
+				}
+				8 = {
+					every_country = {
+						limit = {
+							has_government = communism
+						}
+						add_popularity = {
+							ideology = communism
+							popularity = -0.05
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.10
+						}
+					}
+				}
+				40 = {
+					every_country = {
+						limit = {
+							has_government = communism
+						}
+						add_popularity = {
+							ideology = communism
+							popularity = -0.02
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.05
+						}
+					}
+				}
+				50 = {
+					every_country = {
+						limit = {
+							has_government = communism
+						}
+						add_popularity = {
+							ideology = communism
+							popularity = -0.005
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.015
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_marshall_plan_funds
+		icon = GFX_goal_generic_alliance
+		text = "Marshall Plan Funds"
+		x = 32
+		y = 0
+		#prerequisite = { focus = FRA_colonial_manpower }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		#relative_position_id = FRA_colonial_manpower
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus = {
+		id = FRA_reconstruction_efort
+		icon = GFX_goal_generic_construction2
+		text = "Reconstruction Effort"
+		x = 2
+		y = 1
+		prerequisite = { focus = FRA_marshall_plan_funds }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_marshall_plan_funds
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					infrastructure < 3
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_reconstruction_efort_2
+		icon = GFX_goal_generic_construction2
+		text = "Reconstruction Effort II"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_reconstruction_efort }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_reconstruction_efort
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_reconstruction_efort_3
+		icon = GFX_goal_generic_construction
+		text = "Reconstruction Effort III"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_reconstruction_efort_2 }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_reconstruction_efort_2
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_civilian_industry
+		icon = GFX_goal_generic_construct_civilian
+		text = "Civilian Industry Act"
+		x = -2
+		y = 1
+		prerequisite = { focus = FRA_marshall_plan_funds }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_marshall_plan_funds
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	focus = {
+		id = FRA_civilian_industry_2
+		icon = GFX_goal_generic_construct_civilian
+		text = "Civilian Industry Act II"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_civilian_industry }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_civilian_industry
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	focus = {
+		id = FRA_civilian_industry_3
+		icon = GFX_goal_generic_construct_civilian
+		text = "Civilian Industry Act III"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_civilian_industry_2 }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_civilian_industry_2
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	focus = {
+		id = FRA_marshall_plan_ideas
+		icon = GFX_goal_FRA_marshall_plan
+		text = "End Of the Marshall Plan"
+		x = 2
+		y = 1
+		prerequisite = { focus = FRA_civilian_industry_3 }
+		prerequisite = { focus = FRA_reconstruction_efort_3 }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_civilian_industry_3
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			remove_ideas = {
+				USA_marshall_plan
+			}
+			add_timed_idea = {idea = USA_marshall_plan_2 days = 600}
+		}
+	}
+	focus = {
+		id = FRA_state_affairs
+		icon = GFX_goal_generic_improve_relations
+		text = "State Affairs"
+		x = 6
+		y = 2
+		#prerequisite = { focus = FRA_reconstruction_efort_3 }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		#relative_position_id = FRA_civilian_industry_3
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 200
+		}
+	}
+	focus = {
+		id = FRA_anti_communism_act
+		icon = GFX_goal_USA_disband_worker_unions
+		text = "Anti-Communism Act"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_state_affairs }
+		#mutually_exclusive = { focus = FRA_assert_control_algeria }
+		relative_position_id = FRA_state_affairs
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.150
+			}
+		}
+	}
+	focus = {
+		id = FRA_exit_nato_doctrine
+		icon = GFX_goal_FRA_great_republic
+		text = "Exit NATO Doctrine"
+		x = 0
+		y = 1
+		prerequisite = { focus = FRA_anti_communism_act }
+		mutually_exclusive = { focus = FRA_french_nato_doctrine }
+		relative_position_id = FRA_anti_communism_act
+		cost = 10
+
+		ai_will_do = {
+			factor = -1
+		}
+
+		available = {
+			is_in_faction_with = USA
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			remove_ideas = {
+				NATO_doctrine
+			}
+		}
+	}
+	focus = {
+		id = FRA_exit_nato
+		icon = GFX_goal_FRA_imperial_rule
+		text = "Exit NATO"
+		x = 0
+		y = 2
+		prerequisite = { focus = FRA_exit_nato_doctrine }
+		#mutually_exclusive = { focus = FRA_french_nato_doctrine }
+		relative_position_id = FRA_exit_nato_doctrine
+		cost = 10
+
+		ai_will_do = {
+			factor = -1
+		}
+
+		available = {
+			is_in_faction_with = USA
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			leave_faction = yes
+			USA = {
+				add_opinion_modifier = {
+					target = FRA
+					modifier = faction_traitor
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_french_nato_doctrine
+		icon = GFX_goal_generic_position_armies
+		text = "French NATO Doctrine"
+		x = 3
+		y = 1
+		prerequisite = { focus = FRA_anti_communism_act focus = FRA_colonial_manpower }
+		mutually_exclusive = { focus = FRA_exit_nato_doctrine }
+		relative_position_id = FRA_anti_communism_act
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			is_in_faction_with = USA
+			
+		}
+		
+		bypass = {
+			
+		}
+
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = {
+				FRA_NATO_doctrine
+			}
+			remove_ideas = {
+				NATO_doctrine
+			}
+		}
+	}
+}

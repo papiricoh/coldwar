@@ -1,0 +1,26 @@
+state={
+	id=870
+	name="East Biafra"
+
+	history={
+		owner = ENG
+		add_core_of = NGA
+		buildings = {
+			infrastructure = 2
+			arms_factory = 2
+			industrial_complex = 1
+
+		}
+		victory_points = {
+			13257 10 
+		}
+
+	}
+	provinces={
+		10831 13257 13258 13264 13271 
+	}
+	manpower=350000
+	buildings_max_level_factor=1.000
+	state_category=town
+	local_supplies=0.000
+}

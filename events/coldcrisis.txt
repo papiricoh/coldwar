@@ -1,0 +1,718 @@
+add_namespace = coldcrisis
+
+country_event = {
+	id = coldcrisis.1
+	title = "Construction of the Berlin Wall"
+	desc = "The German Democratic Republic have just build a wall arround the city of Berlin"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "We must help"
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = "This is a provocation, war is imminent"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			declare_war_on = {
+				target = DDR
+				type = annex_everything
+			}
+		}	
+	}
+}
+
+country_event = {
+	id = coldcrisis.2
+	title = "Austrian Release"
+	desc = "The Austrian people are divided in 3 areas of occupation the Austrian people want to be free and they asure us that their neutrality is absolute"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+		date > 1950.1.1
+		date < 1960.1.1
+		has_government = democratic
+	}
+
+	mean_time_to_happen = {
+		days = 2	# Historical outbreak time after elections
+	}
+	
+	option = { 
+		name = "Grant independence to Austria"
+		hidden_effect = {
+			AUS = {
+				set_state_owner = 4
+				set_state_controller = 4
+				set_state_owner = 152
+				set_state_controller = 152
+				set_state_owner = 153
+				set_state_controller = 153
+				set_popularities = {
+					democratic = 75
+					neutrality = 0
+					fascism = 0
+					communism = 25
+				}
+				set_politics = {
+					ruling_party = democratic
+						elections_allowed = no
+						last_election = "1935.12.17"
+						election_frequency = 48
+				}
+				add_ideas = {
+					AUS_total_neutrality
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = coldcrisis.3
+	title = "East Germany asks for support"
+	desc = "The goverment of East Germany asks for support and promises land of the USSR"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "The concesions will be approved"
+		hidden_effect = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.30
+			}
+			DDR = {
+				country_event = {
+					id = coldcrisis.5
+				}
+			}
+		}
+	}
+	option = {
+		name = "This is a provocation, deny this deal"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.30
+			}
+			DDR = {
+				country_event = {
+					id = coldcrisis.4
+				}
+			}
+		}	
+	}
+}
+
+country_event = {
+	id = coldcrisis.4
+	title = "Poland Denies"
+	desc = "The Polish Goverment have denied"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Our plan have been interrupted"
+		hidden_effect = {
+			
+		}
+	}
+}
+
+country_event = {
+	id = coldcrisis.5
+	title = "Poland Agrees"
+	desc = "The Polish Goverment have agreed"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Excelent"
+		hidden_effect = {
+			
+		}
+	}
+}
+
+country_event = {
+	id = coldcrisis.6
+	title = "The Berlin Takeover"
+	desc = "The Prussian goverment have invaded the western part of the city of Berlin, millions of citicents are trapped between fire and rubble again"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Unfortunate"
+		hidden_effect = {
+			
+		}
+	}
+}
+
+
+country_event = {
+	id = coldcrisis.7
+	title = "The Berlin Takeover"
+	desc = "The Prussian goverment have invaded the western part of the city of Berlin, millions of citicents are trapped between fire and rubble again"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Berlin is Ours"
+		hidden_effect = {
+			DDR = {
+				transfer_state = 835
+			}
+		}
+	}
+}
+
+country_event = {
+	id = coldcrisis.8
+	title = "Prussia is demanding his old territories"
+	desc = "Prussia is demanding his old territories of Danzig, Hinterpommern, Ostmark, Niederschlesien, Poznan, Oberschlesien and Ermland-Masuren"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "The Prussians are right"
+		hidden_effect = {
+			DDR = {
+				transfer_state = 68
+				transfer_state = 66
+				transfer_state = 67
+				transfer_state = 762
+				transfer_state = 86
+				transfer_state = 63
+				transfer_state = 807
+				transfer_state = 85
+				transfer_state = 5
+				country_event = coldcrisis.5
+				every_owned_state = {
+					add_core_of = DDR
+				}
+			}
+		}
+	}
+	option = {
+		name = "This is a provocation, war is imminent"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			DDR = {
+				declare_war_on = {
+					target = POL
+					type = annex_everything
+				}
+			}
+		}	
+	}
+}
+
+
+country_event = {
+	id = coldcrisis.9
+	title = "The Indochinan Indepence"
+	desc = "The Indochinan revolt have overwellmed our forces"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	trigger = {
+		tag = FRA
+		date < 1955.1.1
+		has_government = democratic
+		FRA = {
+			has_war_with = LAO
+			has_war_with = VIN
+			has_war_with = CAM
+		}
+		OR = {
+			AND = {
+				286 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+				741 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+				671 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+				670 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+				849 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+				844 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+				851 = {
+					NOT = {
+						is_controlled_by = FRA
+					}
+				}
+			}
+			date > 1952.1.1
+		}
+			
+	}
+	
+	option = { 
+		name = "We must sign peace"
+		hidden_effect = {
+			white_peace = LAO
+			white_peace = CAM
+			white_peace = VIN
+			VIN = {
+				dismantle_faction = yes
+				set_country_flag = VIN_independent
+			}
+
+			SVI = {
+				transfer_state = 286
+				load_oob = "SVI_1936"
+				add_manpower = 600000
+				transfer_state = 851
+				transfer_state = 850
+				transfer_state = 849
+				transfer_state = 847
+			}
+		}
+	}
+	option = {
+		name = "The war continues"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+country_event = {
+	id = coldcrisis.10
+	title = "North Vietnam wants to negotiate a peace agreement"
+	desc = "North Vietnam wants to negotiate a peace agreement, ending hostilities immediately"
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Vietnam is lost"
+		hidden_effect = {
+			white_peace = VIN
+		}
+	}
+	option = {
+		name = "The war will continue"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+country_event = {
+	id = coldcrisis.11
+	title = "Protests and Riots in Algeria"
+	desc = "Protests and riots in Algeria have ended today in altercations with the colonial militia, the assailants have organized in the name of a free Algerian state"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "We have to take action"
+		hidden_effect = {
+			FRA = {
+				release = ALG
+
+			}
+			ALG = {
+				transfer_state = 514
+				transfer_state = 860
+				transfer_state = 859
+				transfer_state = 513
+				transfer_state = 460
+				set_popularities = {
+					democratic = 10
+					neutrality = 60
+					fascism = 0
+					communism = 30
+				}
+				set_politics = {
+					ruling_party = neutrality
+				}
+				load_oob = "ALG_1936"
+			}
+			FRA = {
+				declare_war_on = {
+					target = ALG
+					type = annex_everything
+				}
+			}
+			459 = {
+				set_state_controller_to = FRA
+			}
+		}
+	}
+	option = {
+		name = "It's time to leave Algeria"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			release = ALG
+		}	
+	}
+}
+country_event = {
+	id = coldcrisis.12
+	title = "French-Algerian peace talks"
+	desc = "The French Prime Minister has met today with our delegation and is willing to grant us independence in exchange for some promises not to expand."
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = ""
+		hidden_effect = {
+			ALG = {
+				white_peace = FRA
+				transfer_state = 514
+				transfer_state = 860
+				transfer_state = 859
+				transfer_state = 513
+				transfer_state = 460
+				transfer_state = 861
+				transfer_state = 459
+			}
+		}
+	}
+	option = {
+		name = "War must continue"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			
+		}	
+	}
+}
+country_event = {
+	id = coldcrisis.13
+	title = "The Berlin Wall"
+	desc = "The Soviets have erected a wall around the city of Berlin, preventing the free passage of people between the two Germanys"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Democracy never needed a wall"
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = "This is a war provocation"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+			remove_ideas = {
+				NATO_doctrine
+			}
+		}
+	}
+}
+country_event = { ##USA NATIONAL FOCUS CHECKPOINT CHARLIE TO SOVIET
+	id = coldcrisis.14
+	title = "Problems in Checkpoint Charlie"
+	desc = "This afternoon a tank battalion went to the famous charlie checkpoint for the purpose of making a show of force, our forces in the area have responded in an identical manner immediately"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "We should retreat little by little"
+		hidden_effect = {
+			SOV = {
+				set_country_flag = "Checkpoint Charlie Crisis"
+			}
+		}
+	}
+	option = {
+		name = "This is a war provocation"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			declare_war_on = {
+				target = USA
+				type = annex_everything
+			}
+		}
+	}
+}
+country_event = {
+	id = coldcrisis.cubrev
+	title = "The Cuban Revolution"
+	desc = "Fidel Castro has ordered his revolutionary army to go on the offensive against the Cuban Goverment, has offered us an ultimatum, if we leave our positions of power we will be able to live"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CUB
+		date > 1958.1.1
+		date < 1959.1.1
+		has_government = democratic
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = { 
+		name = "Leave the Country"
+		hidden_effect = {
+			USA = {
+				diplomatic_relation = {
+					country = CUB
+					relation = guarantee
+					active = no
+				}
+			}
+			CUB = {
+				create_country_leader = {
+					name = "Fidel Castro"
+					desc = "Fidel Alejandro Castro Ruz, born 13 August 1926, is a Cuban revolutionary and politician who is the leader of Cuba, serving as the prime minister of Cuba and president. Ideologically a Marxist–Leninist and Cuban nationalist"
+					picture = "Portrait_Fidel_Castro.dds"
+					expire = "2008.1.1"
+					ideology = marxism
+					traits = {
+						
+					}
+				}
+				set_popularities = {
+					democratic = 40
+					neutrality = 0
+					fascism = 0
+					communism = 60
+				}
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+					long_name = "Partido Comunista Cubano"
+					name = "PCC"
+				}
+			}
+		}
+	}
+}
+country_event = { ##CUBAN MISSILE CRISIS
+	id = coldcrisis.15
+	title = "Soviet Missiles Spoted in Cuba"
+	desc = ""
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "We must proceed with caution, a naval blocade should be stablished"
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = "This is a war provocation we must invade Cuba"
+		trigger = { is_ai = no }
+		hidden_effect = {
+			declare_war_on = {
+				target = CUB
+				type = annex_everything
+			}
+		}
+	}
+}
+country_event = { ##Nigerian Civil War
+	id = coldcrisis.16
+	title = "The Nigerian Civil War"
+	desc = "The Republic of Biafra has taken up arms our government is determined to put an end to them"
+	picture = GFX_report_event_soldiers_marching
+	
+	fire_only_once = yes
+	trigger = {
+		tag = NGA
+		country_exists = NGA
+		date > 1967.6.6
+		date < 1968.1.1
+		NOT = {
+			has_war = yes
+		}
+	}
+	
+	option = { 
+		name = "We must proceed defending the country"
+		#trigger = { is_ai = no }
+		hidden_effect = {
+			division_template = {
+				name = "Nigerian Corps"
+					priority = 1
+					division_names_group = ENG_INF_01
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+			}
+			
+			558 = {
+				create_unit = {
+					division = "name = \"I/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"I/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"I/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"I/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"I/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+			}
+
+			858 = {
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"I/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"II/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+				create_unit = {
+					division = "name = \"III/Nigerian Corps Nigeria\" division_template = \"Nigerian Corps\" start_experience_factor = 0.7" 
+					owner = NGA
+				}
+			}
+
+			start_civil_war = {
+				ruling_party = neutrality
+				ideology = fascism
+				size = 0.4
+				capital = 871
+				states = { 
+					871 872 870
+				}
+			}
+		}
+	}
+}
+country_event = { ##CUBAN MISSILE CRISIS END
+	id = coldcrisis.17
+	title = "Soviet Missile Withdrawal"
+	desc = "Soviet Missile Withdrawal in exchange for us also withdrawing the missiles positioned in Turkey."
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = "Its a nice deal"
+		hidden_effect = {
+			#NEWS EVENT END OF THE CUBAN MISILE CRISIS
+		}
+	}
+}

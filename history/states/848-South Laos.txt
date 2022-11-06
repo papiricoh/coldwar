@@ -1,0 +1,26 @@
+state={
+	id=848
+	name="South Laos"
+	history={
+		owner = FRA
+		add_core_of = LAO
+		buildings = {
+			infrastructure = 1
+			industrial_complex = 1
+
+		}
+		1949.1.1 = {
+			owner = LAO
+			controller = FRA
+
+		}
+
+	}
+	provinces={
+		1374 1520 1563 1577 1592 4260 4539 4554 7426 10195 10238 10326 10453 12210 
+	}
+	manpower=1340000
+	buildings_max_level_factor=1.000
+	state_category=rural
+	local_supplies=0.000
+}
