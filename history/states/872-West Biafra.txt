@@ -1,5 +1,5 @@
 state={
-	id=872
+	id=946
 	name="West Biafra"
 	history={
 		owner = ENG

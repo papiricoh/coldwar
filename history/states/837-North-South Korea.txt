@@ -1,6 +1,6 @@
 state=
 {
-	id=837
+	id=911
 	name="North-South Korea"
 	manpower = 284105
 	

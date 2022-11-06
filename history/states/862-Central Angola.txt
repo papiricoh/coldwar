@@ -1,5 +1,5 @@
 state={
-	id=862
+	id=936
 	name="Central Angola"
 	resources={
 		rubber=1.000

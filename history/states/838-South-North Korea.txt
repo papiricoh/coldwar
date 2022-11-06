@@ -1,6 +1,6 @@
 
 state={
-	id=838
+	id=912
 	name="South-North Korea"
 	manpower = 174200
 	state_category = town

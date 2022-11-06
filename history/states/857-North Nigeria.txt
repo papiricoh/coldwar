@@ -1,5 +1,5 @@
 state={
-	id=857
+	id=931
 	name="North Nigeria"
 	resources={
 		rubber=2.000

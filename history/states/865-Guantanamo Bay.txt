@@ -1,6 +1,6 @@
 
 state={
-	id=865
+	id=939
 	name="Guantanamo Bay"
 	resources={
 		steel=1.000

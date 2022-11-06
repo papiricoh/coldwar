@@ -1,5 +1,5 @@
 state={
-	id=852
+	id=926
 	name="Central Tonkin"
 	history={
 		add_core_of = VIN
