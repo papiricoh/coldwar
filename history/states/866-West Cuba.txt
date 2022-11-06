@@ -1,5 +1,5 @@
 state={
-	id=940
+	id=934
 	name="West Cuba"
 	history={
 		owner = CUB
@@ -18,7 +18,7 @@ state={
 
 	}
 	provinces={
-		4600 13245 13246 
+		4600
 	}
 	manpower=152000
 	buildings_max_level_factor=1.000

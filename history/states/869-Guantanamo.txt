@@ -1,5 +1,5 @@
 state={
-	id=943
+	id=937
 	name="Guantanamo"
 	history={
 		owner = CUB
@@ -21,7 +21,7 @@ state={
 
 	}
 	provinces={
-		1550 7590 12347 13252 
+		1550 7590 12347
 	}
 	manpower=1231442
 	buildings_max_level_factor=1.000

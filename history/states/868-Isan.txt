@@ -1,0 +1,18 @@
+state={
+	id=868
+	name="STATE_868"
+	provinces={
+		1357
+	}
+	history = {
+		owner = SIA
+		buildings = {
+			infrastructure = 1
+		}
+		add_core_of = SIA
+	}
+	manpower=2000000
+	state_category = rural
+	buildings_max_level_factor=1.000
+	local_supplies=0.000
+}
